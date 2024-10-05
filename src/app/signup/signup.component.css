@@ -1,15 +1,10 @@
-/* Style global pour le body et html pour assurer une hauteur de 100% */
-html, body {
-    height: 100%; /* Assurez-vous que le html et le body prennent 100% de la hauteur */
-    margin: 0; /* Éliminer les marges par défaut */
-}
 
 /* Centrer la carte de signup dans la fenêtre */
 .signup-form {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Prend toute la hauteur de la fenêtre */
+    height: 90%; /* Prend toute la hauteur de la fenêtre */
 }
 
 mat-card {

@@ -52,6 +52,7 @@ export class SignupComponent {
       return;
     }
     console.log("Calling the register service");
+    console.log(this.signupForm.value);
 
     this.authService.register(this.signupForm.value).subscribe(
       (response)=>{

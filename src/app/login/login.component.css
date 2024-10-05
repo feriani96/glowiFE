@@ -1,0 +1,66 @@
+mat-card {
+    width: 100%;
+    max-width: 400px; 
+    margin: 8px; 
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%; 
+}
+
+mat-card-header {
+    margin-bottom: 8px;
+}
+
+mat-form-field {
+    width: 100%; 
+    margin-bottom: 14px; 
+}
+
+.custom-button {
+    width: 100%;
+    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+}
+
+.enabled-button {
+    background-color: black;
+    color: white;
+    cursor: pointer; 
+}
+
+
+.disabled-button {
+    background-color: #e0e0e0; 
+    color: #a0a0a0; 
+    cursor: not-allowed; 
+}
+
+
+.mat-card-footer {
+    display: flex;
+    justify-content: center; 
+}
+
+/* Centrer le mat-card-footer */
+.signup-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Ajouter de l'espace au-dessus du lien */
+}
+
+/* Style du lien de signup */
+.signup-link {
+    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+    color: #666666;
+    text-decoration: underline;
+    cursor: pointer; /* Afficher un pointeur au survol */
+    font-size: 14px; /* Ajuster la taille du texte si nécessaire */
+}
+@media (max-width: 600px) {
+    mat-card {
+        width: 90%; 
+    }
+}
