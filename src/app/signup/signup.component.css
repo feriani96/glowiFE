@@ -1,0 +1,39 @@
+/* Style global pour le body et html pour assurer une hauteur de 100% */
+html, body {
+    height: 100%; /* Assurez-vous que le html et le body prennent 100% de la hauteur */
+    margin: 0; /* Éliminer les marges par défaut */
+}
+
+/* Centrer la carte de signup dans la fenêtre */
+.signup-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Prend toute la hauteur de la fenêtre */
+}
+
+mat-card {
+    width: 100%;
+    max-width: 400px; /* Largeur maximale du formulaire */
+    margin: 16px; /* Espacement autour de la carte */
+}
+
+/* Style pour tous les champs de formulaire */
+mat-form-field {
+    width: 100%; /* Chaque champ de formulaire prendra 100% de la largeur de mat-card */
+    margin-bottom: 16px; /* Espacement entre les champs */
+}
+
+/* Styles du bouton */
+button {
+    margin: 2%;
+    padding: 5px;
+    float: right;
+}
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 600px) {
+    mat-card {
+        width: 90%; /* Largeur pour les petits écrans */
+    }
+}

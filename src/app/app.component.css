@@ -1,0 +1,16 @@
+.mat-toolbar {
+    font-family: 'Neue Haas Grotesk Display Pro Medium, sans-serif';
+    background-color: #F5F5F5;
+    color: rgb(0, 0, 0);
+    font-size: 13px;
+    text-decoration: none solid rgb(18, 18, 18);
+    text-transform: uppercase;
+}
+
+.mat-button {
+    color: white;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
