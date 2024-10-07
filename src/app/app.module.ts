@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './features/login/login.component';
 import { SignupComponent } from './features/signup/signup.component';
+import { AdminModule } from './features/admin/admin.module';
+import { CustomerModule } from './features/customer/customer.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { SignupComponent } from './features/signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AdminModule,
+    CustomerModule
 
   ],
   providers: [],

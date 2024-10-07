@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { UserStorageService } from 'src/app/core/services/storage/user-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -33,12 +34,17 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    const username = this.loginForm.get('email')!.value;
+    const email = this.loginForm.get('email')!.value;
     const password = this.loginForm.get('password')!.value;
 
-    this.authService.login(username, password).subscribe(
+    this.authService.login(email, password).subscribe(
       (res: any)=>{
-        this.snackBar.open('Login success', 'OK', {duration:5000});
+        if (UserStorageService.isAdminLoggedIn()){
+          this.router.navigateByUrl("admin/dashboard");
+        } else if (UserStorageService.isCustomerLoggedIn()){
+          this.router.navigateByUrl("customer/dashboard");
+        }
+
       },
       (err: any)=>{
         console.error('Error during login:', err);
@@ -48,6 +54,5 @@ export class LoginComponent {
     )
 
   }
-
 
 }
