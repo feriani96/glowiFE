@@ -2,28 +2,29 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { UserStorageService } from '../storage/user-storage.service';
-
-const BASIC_URL="http://localhost:8080/";
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private baseUrl = environment.BASIC_URL;
+
 
   constructor(private http:HttpClient,
     private userStorageService: UserStorageService,
   ) { }
 
   register(signupRequest:any): Observable<any>{
-    return this.http.post(BASIC_URL + "sign-up", signupRequest);
+    return this.http.post(`${this.baseUrl}sign-up`, signupRequest);
   }
 
-  login(username: string, password: string): any {
+  login(email: string, password: string): any {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = { username, password };
+    const body = { email, password };
 
-    return this.http.post(BASIC_URL + 'authenticate', body, { headers, observe: 'response' }).pipe(
+    return this.http.post(`${this.baseUrl}authenticate`, body, { headers, observe: 'response' }).pipe(
       map((res: any) => {
         console.log(res);
 
@@ -48,45 +49,3 @@ export class AuthService {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// login(username: string, password:string):any{
-//   const headers = new HttpHeaders().set('Content-Type', 'application/json');
-//   const body = {username, password};
-
-//   return this.http.post(BASIC_URL + 'authenticate', body, {headers, observe:'response'}).pipe(
-//     map((res)=>{
-//       console.log(res);
-//       const token = res.headers.get('authorization');
-//       const user = res.body;
-//       console.log(token);
-
-//       if(token && user){
-//         this.userStorageService.saveToken(token);
-//         this.userStorageService.saveUser(user);
-//         return true;
-
-//       }
-//       return false;
-//     })
-//   )
-// }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -41,6 +41,7 @@ export class LoginComponent {
         this.snackBar.open('Login success', 'OK', {duration:5000});
       },
       (err: any)=>{
+        console.error('Error during login:', err);
         this.snackBar.open('Bad credentials', 'ERROR', {duration:5000});
       }
 
