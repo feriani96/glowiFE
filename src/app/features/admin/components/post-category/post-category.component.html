@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Add Category</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+
+        <mat-card-header>
+            <mat-card-title>Add Category</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <mat-form-field appearance="outline" class="mat-40">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" placeholder="Name" formControlName="name">
+                <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">
+                    This input is required!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="mat-40">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" placeholder="Description" formControlName="description">
+                <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">
+                    This input is required!
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button class="custom-button" type="submit">Add Category</button>
+
+        </mat-card-content>
+    </form>
+</div>
