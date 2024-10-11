@@ -1,0 +1,18 @@
+<div class="image-uploader-container">
+  <div class="main-image-container">
+    <img [src]="mainImagePreview" alt="Main Image" class="main-image" />
+  </div>
+
+  <div class="thumbnail-container">
+    <div class="thumbnail-wrapper" *ngFor="let file of selectedFiles; let i = index">
+      <input type="file" id="fileInput-{{i}}" (change)="onFileSelected($event, i)" style="display: none;" />
+      <div (click)="imagePreviews[i] ? setMainImage(i) : triggerFileInput(i)" class="add-image-square">
+        <img *ngIf="imagePreviews[i]" [src]="imagePreviews[i]" alt="Image Preview" class="thumbnail" />
+        <span *ngIf="!imagePreviews[i]">+</span>
+      </div>
+      <button *ngIf="imagePreviews[i]" mat-icon-button (click)="removeImage(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

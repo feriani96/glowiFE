@@ -1,0 +1,68 @@
+.image-uploader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image-container {
+  width: 300px;  
+  height: 300px;
+  margin-bottom: 20px; 
+  border: 2px solid #ccc;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.thumbnail-wrapper {
+  position: relative;
+  cursor: pointer; 
+}
+
+.thumbnail {
+  width: 75px;  
+  height: 75px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.thumbnail-wrapper button {
+  position: absolute; 
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.add-image-square {
+  width: 75px;
+  height: 75px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* Réduire la taille de la police pour mieux s'adapter */
+  color: #888;
+  cursor: pointer;
+}
+
+.thumbnail-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.thumbnail-wrapper mat-icon {
+  color: red; /* Changez la couleur selon vos préférences */
+  font-size: 24px; /* Ajustez la taille de l'icône */
+  position: absolute;
+  top: 5px;
+  right: 5px; /* Positionnez l'icône en haut à droite */
+}

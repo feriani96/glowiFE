@@ -13,12 +13,13 @@ import { LoginComponent } from './features/login/login.component';
 import { SignupComponent } from './features/signup/signup.component';
 import { AdminModule } from './features/admin/admin.module';
 import { CustomerModule } from './features/customer/customer.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,8 @@ import { CustomerModule } from './features/customer/customer.module';
     ReactiveFormsModule,
     HttpClientModule,
     AdminModule,
-    CustomerModule
+    CustomerModule,
+    SharedModule
 
   ],
   providers: [],

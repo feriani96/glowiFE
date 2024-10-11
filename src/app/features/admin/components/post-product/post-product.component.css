@@ -1,0 +1,25 @@
+.post-product-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-uploader-section {
+  width: 25%;
+  padding: 20px;
+  background-color: #f7f7f7;
+  height: auto;
+}
+
+.form-section {
+  width: 70%;
+}
+
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 100%;
+}
