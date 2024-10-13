@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<!-- dashboard.component.html -->
+<div class="dashboard-container">
+  <div class="product-card" *ngFor="let product of products">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description }}</p>
+    <p>Price: {{ product.price | currency }}</p>
+    <p>Quantity: {{ product.quantity }}</p>
+
+    <!-- Affichage des images -->
+    <!-- <div class="product-images">
+      <div *ngFor="let imgUrl of product.imgUrls; let i = index"> -->
+        <!-- Afficher uniquement les images non nulles -->
+        <!-- <img *ngIf="imgUrl" [src]="imgUrl" alt="Product Image {{i + 1}}" class="product-image"/>
+      </div>
+    </div> -->
+  </div>
+</div>

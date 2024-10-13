@@ -10,29 +10,35 @@ const baseUrl = environment.BASIC_URL;
   providedIn: 'root'
 })
 export class AdminService {
-  
-  constructor(private http:HttpClient) { }
 
-  addCategory(categoryDto:any): Observable<any>{
+  constructor(private http: HttpClient) { }
+
+  addCategory(categoryDto: any): Observable<any> {
     return this.http.post(`${baseUrl}api/admin/category`, categoryDto, {
-      headers: this.createAuthorizationHeader(), 
+      headers: this.createAuthorizationHeader(),
     })
   }
 
   getAllCategories(): Observable<any> {
-    return this.http.get(`${baseUrl}api/admin/categories`, {  
-        headers: this.createAuthorizationHeader(),
+    return this.http.get(`${baseUrl}api/admin/categories`, {
+      headers: this.createAuthorizationHeader(),
     });
-}
+  }
 
   addProduct(productDto: any): Observable<any> {
     return this.http.post(`${baseUrl}api/admin/products`, productDto, {
       headers: this.createAuthorizationHeader(),
     });
   }
-  
+
+  getAllProducts(): Observable<any> {
+    return this.http.get(`${baseUrl}api/admin/products`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
-    const token = UserStorageService.getToken(); 
+    const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 }

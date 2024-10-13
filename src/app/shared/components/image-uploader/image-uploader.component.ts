@@ -9,9 +9,9 @@ export class ImageUploaderComponent {
   @Output() imageSelected = new EventEmitter<(File | null)[]>();
   @ViewChild('fileInput') fileInput: any;
 
-  selectedFiles: (File | null)[] = [null, null, null, null];  // Maximum de 4 fichiers d'images
-  imagePreviews: string[] = ['', '', '', ''];  // Aperçus des images
-  mainImagePreview: string = 'assets/images/productAvatar.png';  // Image principale
+  selectedFiles: (File | null)[] = [null, null, null, null];  
+  imagePreviews: string[] = ['', '', '', ''];  
+  mainImagePreview: string = 'assets/images/productAvatar.png';  
 
   // Ouvre le sélecteur de fichiers pour un index donné
   triggerFileInput(index: number): void {
@@ -39,7 +39,7 @@ export class ImageUploaderComponent {
     reader.onload = () => {
       this.imagePreviews[index] = reader.result as string;
       if (index === 0) {
-        this.mainImagePreview = reader.result as string;  // Image principale
+        this.mainImagePreview = reader.result as string;  
       }
     };
     reader.readAsDataURL(file);

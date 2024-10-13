@@ -14,7 +14,7 @@ export class PostProductComponent implements OnInit {
   listOfCategories: any = [];
   selectedFiles: (File | null)[] = [null, null, null, null]; // Maximum de 4 fichiers d'images
   imagePreviews: string[] = ['', '', '', ''];  // Aperçus des images
-  imageSelected: string | null = 'assets/images/productAvatar.png';  
+  imageSelected: string | null = 'assets/images/productAvatar.png';
   colors: string[] = ['Red', 'Green', 'Blue'];
   sizes: string[] = ['S', 'M', 'L', 'XL'];
 
@@ -23,30 +23,23 @@ export class PostProductComponent implements OnInit {
     private adminService: AdminService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {
-    this.productForm = this.fb.group({
-      categoryId: [null, [Validators.required]],
-      name: [null],
-      price: [null],
-      description: [null],
-      quantity: [null],
-      availableSizes: [null],
-      colors: [null],
-      imgUrls: [null],
-      
-    });
-
-  }
+  ) {}
 
   ngOnInit(): void {
-   
-
-
-    this.getAllCategories(); 
+        this.productForm = this.fb.group({
+      categoryId: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      price: [null, [Validators.required]],
+      description: [null, [Validators.required]],
+      quantity: [null, [Validators.required]],
+      availableSizes: [null, [Validators.required]],
+      colors: [null, [Validators.required]],
+      imgUrls: [null],
+    });
+    this.getAllCategories();
   }
 
   getAllCategories(): void {
-
     this.adminService.getAllCategories().subscribe(
       res => {
         this.listOfCategories = res;
@@ -61,7 +54,7 @@ export class PostProductComponent implements OnInit {
 
   addProduct(): void {
     if (this.productForm.valid) {
-      console.log('Formulaire valide, envoi des données...'); 
+      console.log('Formulaire valide, envoi des données...');
 
       const formData: FormData = new FormData();
       formData.append('categoryId', this.productForm.get('categoryId')!.value);
@@ -76,17 +69,15 @@ export class PostProductComponent implements OnInit {
 
       // Ajout des images sélectionnées
       this.selectedFiles.forEach((file, index) => {
-        console.log("in product", file, index);
         if (file) {
           formData.append(`image${index}`, file);
-          console.log(`Image ${index} ajoutée:`, file); // Log pour chaque image ajoutée
         }
       });
 
-       // Assurez-vous que les URLs sont correctement liées
-    const imgUrls = this.selectedFiles.map((file, index) => file ? URL.createObjectURL(file) : null);
-    formData.append('imgUrls', JSON.stringify(imgUrls));
-    console.log('Img URLs ajoutées:', imgUrls);
+      // Assurez-vous que les URLs sont correctement liées
+      const imgUrls = this.selectedFiles.map((file, index) => file ? URL.createObjectURL(file) : null);
+      formData.append('imgUrls', JSON.stringify(imgUrls));
+      console.log('Img URLs ajoutées:', imgUrls);
 
       console.log('Form Data:', formData);
       console.log('Product Form Values:', this.productForm.value);
@@ -96,33 +87,31 @@ export class PostProductComponent implements OnInit {
             duration: 5000
           });
           this.router.navigateByUrl('/admin/dashboard');
-        }else{
+        } else {
           this.snackBar.open(res.message, 'Close', {
             duration: 5000,
             panelClass: 'error-snackbar'
           });
         }
       })
-
-    }else{
+    } else {
       this.productForm.markAllAsTouched();
     }
-
   }
+
+
 
   // Gère les fichiers image sélectionnés
   onImageSelected(files: (File | null)[]): void {
     this.selectedFiles = files;
-    console.log('Fichiers sélectionnés:', this.selectedFiles); // Log des fichiers sélectionnés
-    // Create an array of file URLs or names to store in the form control
-    const imageUrls = this.selectedFiles.map(file => file ? file.name : null);
+    console.log('Fichiers sélectionnés:', this.selectedFiles);
 
-    // Update the form control 'imgUrls' with the array of image URLs
+    const nonNullFiles = this.selectedFiles.filter(file => file !== null);
+    const imageUrls = nonNullFiles.map(file => file?.name || '');
+
     this.productForm.patchValue({
       imgUrls: imageUrls
     });
-  
-    console.log('Fichiers sélectionnés:', this.selectedFiles);
-    console.log('URLs des images:', imageUrls);
+
   }
 }
