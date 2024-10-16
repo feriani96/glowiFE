@@ -6,12 +6,15 @@
     <p>Price: {{ product.price | currency }}</p>
     <p>Quantity: {{ product.quantity }}</p>
 
-    <!-- Affichage des images -->
-    <!-- <div class="product-images">
-      <div *ngFor="let imgUrl of product.imgUrls; let i = index"> -->
-        <!-- Afficher uniquement les images non nulles -->
-        <!-- <img *ngIf="imgUrl" [src]="imgUrl" alt="Product Image {{i + 1}}" class="product-image"/>
+    <div *ngIf="product.imageUrls && product.imageUrls.length > 0">
+      <div *ngFor="let imageUrl of product.imageUrls">
+        <img [src]="imageUrl" alt="Image produit" style="max-width: 200px; margin: 5px;" />
       </div>
-    </div> -->
+    </div>
+    <div *ngIf="product.imageUrls.length === 0">
+      <p>Aucune image disponible</p>
+    </div>
+
   </div>
+   
 </div>

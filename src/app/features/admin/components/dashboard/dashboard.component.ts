@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
-import { Product } from '../../models/product';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,19 +9,27 @@ import { Product } from '../../models/product';
 })
 export class DashboardComponent implements OnInit {
   products: any = [];
+  selectedImage: string = ''; // Image sélectionnée
 
-  constructor(private adminService: AdminService) {}
+  constructor(
+    private adminService: AdminService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.getProducts();
   }
 
-  getAllProducts() {
-    this.products = [];
-    this.adminService.getAllProducts().subscribe((data : any) => {
-    this.products= data;
-
-    console.log(data.imgUrls)}  
-  )};
-  
+  getProducts(): void {
+    this.adminService.getAllProducts().subscribe(
+      (res) => {
+        this.products = res; // Stocke les produits dans la variable
+        console.log('Produits récupérés:', this.products);
+      },
+      (error) => {
+        console.error('Erreur de récupération des produits:', error);
+      }
+    );
+  }
 }
+

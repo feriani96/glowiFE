@@ -26,7 +26,7 @@ export class PostProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-        this.productForm = this.fb.group({
+    this.productForm = this.fb.group({
       categoryId: [null, [Validators.required]],
       name: [null, [Validators.required]],
       price: [null, [Validators.required]],
@@ -34,7 +34,7 @@ export class PostProductComponent implements OnInit {
       quantity: [null, [Validators.required]],
       availableSizes: [null, [Validators.required]],
       colors: [null, [Validators.required]],
-      imgUrls: [null],
+      // Suppression de imgUrls, car cela sera géré via FormData
     });
     this.getAllCategories();
   }
@@ -65,8 +65,6 @@ export class PostProductComponent implements OnInit {
       formData.append('availableSizes', JSON.stringify(this.productForm.get('availableSizes')!.value));
       formData.append('colors', JSON.stringify(this.productForm.get('colors')!.value));
 
-      console.log('FormData construit:', formData);
-
       // Ajout des images sélectionnées
       this.selectedFiles.forEach((file, index) => {
         if (file) {
@@ -74,44 +72,36 @@ export class PostProductComponent implements OnInit {
         }
       });
 
-      // Assurez-vous que les URLs sont correctement liées
-      const imgUrls = this.selectedFiles.map((file, index) => file ? URL.createObjectURL(file) : null);
-      formData.append('imgUrls', JSON.stringify(imgUrls));
-      console.log('Img URLs ajoutées:', imgUrls);
-
-      console.log('Form Data:', formData);
-      console.log('Product Form Values:', this.productForm.value);
-      this.adminService.addProduct(this.productForm.value).subscribe((res) => {
+      console.log('FormData construit:', formData);
+      
+      // Envoi du produit au backend
+      this.adminService.addProduct(formData).subscribe((res) => {
         if (res.id != null) {
-          this.snackBar.open('Product Posted Successfully!', 'Close', {
+          this.snackBar.open('Produit publié avec succès !', 'Fermer', {
             duration: 5000
           });
           this.router.navigateByUrl('/admin/dashboard');
         } else {
-          this.snackBar.open(res.message, 'Close', {
+          this.snackBar.open(res.message, 'Fermer', {
             duration: 5000,
             panelClass: 'error-snackbar'
           });
         }
-      })
+      });
     } else {
       this.productForm.markAllAsTouched();
     }
   }
 
-
-
-  // Gère les fichiers image sélectionnés
   onImageSelected(files: (File | null)[]): void {
     this.selectedFiles = files;
     console.log('Fichiers sélectionnés:', this.selectedFiles);
-
-    const nonNullFiles = this.selectedFiles.filter(file => file !== null);
-    const imageUrls = nonNullFiles.map(file => file?.name || '');
-
-    this.productForm.patchValue({
-      imgUrls: imageUrls
-    });
-
+  
+    // Filtrer les fichiers nulls et mapper uniquement les fichiers valides
+    this.imagePreviews = this.selectedFiles.filter((file): file is File => file !== null)
+                                            .map((file: File) => URL.createObjectURL(file));
+  
+    console.log('Aperçus d\'images:', this.imagePreviews);
   }
+  
 }
