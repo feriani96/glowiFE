@@ -1,76 +1,75 @@
-.container {
-  padding: 10px;
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-
+  background-color: #f8f8f8;
+  padding: 50px;
 }
 
 .product-card {
+  width: calc(25% - 10px);
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
   font-family: "Neue Haas Grotesk Display Pro Medium";
-  text-align: center;
-  height: 600px; /* Augmenter la hauteur du produit pour plus d'espace */
-  width: 100%; 
-  margin: 0 0 37px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+}
+
+.product-image {
+  height: 400px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-details {
   padding: 10px;
-  border-radius: 8px; /* Coins arrondis pour un effet visuel agréable */
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Ombre pour ajouter du relief */
 }
 
-.product-tile {
+.product-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #000;
   text-align: center;
-  height: 100%;
-  width: 100%;
-  display: block;
+  margin-bottom: 10px;
 }
 
-.product-title {
-  font-size: 16px; 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; 
-}
-
-.product-image-container {
-  width: 100%;
-  height: 70%; /* Augmenter la hauteur de l'image pour occuper plus d'espace */
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #ddd; /* Bordure autour de l'image pour se coordonner avec la carte */
-}
-
-.product-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Garder l'image entièrement visible sans zoom */
-  object-position: center;
-  display: block;
-}
-
-.product-details-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  height: 30%; /* Ajuster la hauteur des détails pour une meilleure proportion */
+.product-description {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 10px;
+  height: 60px;
 }
 
 .product-info {
-  text-align: center;
-  padding: 5px;
-  font-size: 14px; /* Augmenter légèrement la taille du texte pour améliorer la lisibilité */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.product-info p {
-  margin: 4px 0;
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-info {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .color-list {
   display: flex;
   gap: 5px;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .color-circle {
@@ -78,14 +77,55 @@
   height: 20px;
   border-radius: 50%;
   display: inline-block;
-  border: 1px solid #ddd;
+  border: 1px solid #512b2b;
 }
 
-mat-grid-list {
-  padding: 10px;
-  margin: 0 auto; /* Centrer le grid */
+.category-row {
+  justify-content: center;
 }
 
-mat-grid-tile {
-  padding: 5px; /* Espacement interne pour chaque carte produit */
+.category-label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
 }
+
+.category-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: #d9534f; 
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.action-button {
+  margin-right: 10px;
+  background-color: #f8e1e7; 
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #f1c1d1;
+}
+
+.delete-button {
+  background-color: #e0e0e0; 
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c7c7c7; 
+}
+

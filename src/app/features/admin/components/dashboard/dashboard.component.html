@@ -1,34 +1,46 @@
-<div class="container">
-  <mat-grid-list cols="4" rowHeight="1:1" gutterSize="10px">
-    <mat-grid-tile *ngFor="let product of products" class="product-tile">
-      <mat-card class="product-card">
+<div class="product-list">
+  <mat-card class="product-card" *ngFor="let product of products">
+    <div class="product-image" (mouseenter)="startImageRotation(product)" (mouseleave)="stopImageRotation()">
+      <img mat-card-image [src]="currentImageUrl(product)" alt="Image produit">
+    </div>
 
-        <!-- Conteneur de l'image principale -->
-        <div class="product-image-container" (mouseenter)="startImageRotation(product)"
-          (mouseleave)="stopImageRotation()">
-          <img mat-card-image [src]="currentImageUrl(product)" alt="Image produit">
+    <div class="product-details">
+      <!-- Liste of colors-->
+      <div *ngIf="product.colors && product.colors.length > 0" class="color-list">
+        <span *ngFor="let color of product.colors" [ngStyle]="{'background-color': color}" class="color-circle"></span>
+      </div>
+
+      <!-- Name-->
+      <h2 class="product-name">{{product.name}}</h2>
+
+      <!-- Description-->
+      <p class="product-description">{{product.description}}</p>
+
+      <!-- Price -->
+      <div class="product-info">
+        <div class="info-row center-info">
+          <span class="info-value">{{product.price}}Dt</span>
         </div>
 
-        <!-- Conteneur des détails du produit -->
-        <div class="product-details-container">
-          <mat-card-header>
-            <mat-card-title class="product-title">{{ product.name }}</mat-card-title>
-            <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
-
-          </mat-card-header>
-
-          <mat-card-content class="product-info">
-            <p><strong>Price:</strong> {{ product.price }}Dt</p>
-            <p><strong>Quantity:</strong> {{ product.quantity }}</p>
-            <p><strong>Colors:</strong></p>
-            <div *ngIf="product.colors && product.colors.length > 0" class="color-list">
-              <span *ngFor="let color of product.colors" [ngStyle]="{'background-color': color}"
-                class="color-circle"></span>
-            </div>
-          </mat-card-content>
+        <!-- Category -->
+        <div class="info-row category-row">
+          <span class="category-label">Category:</span>
+          <span class="category-value">{{product.categoryName}}</span>
         </div>
 
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+        <!-- Quantity -->
+        <div class="info-row">
+          <span class="info-label">Quantity:</span>
+          <span class="info-value">{{product.quantity}}</span>
+        </div>
+      </div>
+
+      <!-- Actions for button -->
+      <div class="actions">
+        <button mat-raised-button  class="action-button" [routerLink]="'/admin/faq/' + product.id">FAQ</button>
+        <button mat-raised-button  class="action-button" [routerLink]="'/admin/product/' + product.id">Update</button>
+        <button mat-raised-button  class="delete-button">Delete</button>
+      </div>
+    </div>
+  </mat-card>
 </div>
