@@ -22,6 +22,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -53,7 +54,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCheckboxModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatCommonModule
+    MatCommonModule,
+    MatAutocompleteModule
   ]
 })
 export class AngularMaterialModule {

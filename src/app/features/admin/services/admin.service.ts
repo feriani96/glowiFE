@@ -37,6 +37,12 @@ export class AdminService {
     });
   }
 
+  getAllProductByName(name:any): Observable<any> {
+    return this.http.get(`${baseUrl}api/admin/search/${name}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);

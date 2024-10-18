@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,61 +10,90 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DashboardComponent implements OnInit {
   products: any = [];
-  // Cette variable stocke l'image principale sélectionnée pour chaque produit
   selectedImages: { [key: string]: number } = {};
   private imageRotationInterval: any;
+  searchProductFrom!: FormGroup;
 
   constructor(
     private adminService: AdminService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.getProducts();
+    this.searchProductFrom = this.fb.group({
+      title: [null, [Validators.required]]
+    });
   }
 
-  // Récupération des produits depuis l'API
+  // Function to retrieve products from the API
   getProducts(): void {
     this.adminService.getAllProducts().subscribe(
       (res) => {
-        console.log('Réponse de l\'API:', res);
-        this.products = res; 
-        console.log('Produits récupérés:', this.products);
-  
+        console.log('API response:', res);
+        this.products = res;
+        console.log('Retrieved products:', this.products);
+
         this.products.forEach((product: any) => {
-          console.log('Produit:', product);
-          // Initialiser l'image par défaut pour chaque produit
+          console.log('Product:', product);
+          // Initialize the default image for each product
           this.selectedImages[product.id] = 0;
         });
       },
       (error) => {
-        console.error('Erreur de récupération des produits:', error);
-        this.snackBar.open('Erreur lors du chargement des produits', 'Fermer', {
+        console.error('Error retrieving products:', error);
+        this.snackBar.open('Error loading products', 'Close', {
           duration: 3000
         });
       }
     );
   }
 
-  // Fonction pour obtenir l'URL de l'image actuelle
+  // Function to submit the search form
+  submitForm(): void {
+    if (this.searchProductFrom.invalid) {
+      this.snackBar.open('Please enter a valid keyword', 'Close', {
+        duration: 3000
+      });
+      return;
+    }
+
+    const title = this.searchProductFrom.get('title')!.value;
+    this.adminService.getAllProductByName(title).subscribe(
+      (res) => {
+        console.log('API response:', res);
+        this.products = res;
+        this.products.forEach((product: any) => {
+          this.selectedImages[product.id] = 0;
+        });
+      },
+      (error) => {
+        console.error('Error retrieving products:', error);
+        this.snackBar.open('Error loading products', 'Close', {
+          duration: 3000
+        });
+      }
+    );
+  }
+
+  // Function to get the current image URL
   currentImageUrl(product: any): string {
     return product.imageUrls[this.selectedImages[product.id] || 0];
   }
 
-  // Démarrer la rotation des images au survol
+  // Start image rotation on hover
   startImageRotation(product: any): void {
-    // Réinitialiser l'index d'image pour chaque produit
     if (!this.selectedImages[product.id]) {
       this.selectedImages[product.id] = 0;
     }
 
-    // Rotation des images toutes les secondes
     this.imageRotationInterval = setInterval(() => {
       this.selectedImages[product.id] = (this.selectedImages[product.id] + 1) % product.imageUrls.length;
     }, 1000);
   }
 
-  // Arrêter la rotation des images lorsque la souris quitte le produit
+  // Stop image rotation when the mouse leaves the product
   stopImageRotation(): void {
     clearInterval(this.imageRotationInterval);
   }
