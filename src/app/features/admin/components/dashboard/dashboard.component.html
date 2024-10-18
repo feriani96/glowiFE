@@ -1,20 +1,34 @@
-<!-- dashboard.component.html -->
 <div class="dashboard-container">
-  <div class="product-card" *ngFor="let product of products">
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.description }}</p>
-    <p>Price: {{ product.price | currency }}</p>
-    <p>Quantity: {{ product.quantity }}</p>
+  <mat-grid-list cols="3" rowHeight="350px" gutterSize="16px">
+    <mat-grid-tile *ngFor="let product of products">
+      <mat-card class="product-card">
+        <mat-card-header>
+          <mat-card-title>{{ product.name }}</mat-card-title>
+          <mat-card-subtitle>{{ product.description }}</mat-card-subtitle>
+        </mat-card-header>
 
-    <div *ngIf="product.imageUrls && product.imageUrls.length > 0">
-      <div *ngFor="let imageUrl of product.imageUrls">
-        <img [src]="imageUrl" alt="Image produit" style="max-width: 200px; margin: 5px;" />
-      </div>
-    </div>
-    <div *ngIf="product.imageUrls.length === 0">
-      <p>Aucune image disponible</p>
-    </div>
+        <img mat-card-image [src]="product.imageUrls.length > 0 ? product.imageUrls[0] : 'default-image-url'" alt="Image produit">
+        
+        <mat-card-content>
+          <div>
+            <p><strong>Price:</strong> {{ product.price | currency }} Dt</p>
+            <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+            <p><strong>Colors:</strong></p>
+            <div *ngIf="product.colors && product.colors.length > 0">
+              <mat-chip-list>
+                <mat-chip *ngFor="let color of product.colors">{{ color }}</mat-chip>
+              </mat-chip-list>
+            </div>
+            <div *ngIf="product.colors.length === 0">
+              <p>No colors available</p>
+            </div>
+          </div>
+        </mat-card-content>
 
-  </div>
-   
+        <mat-card-actions>
+          <button mat-button>View Details</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

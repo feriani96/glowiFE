@@ -28,8 +28,10 @@ export class DashboardComponent implements OnInit {
       },
       (error) => {
         console.error('Erreur de récupération des produits:', error);
+        this.snackBar.open('Erreur lors du chargement des produits', 'Fermer', {
+          duration: 3000
+        });
       }
     );
   }
 }
-
