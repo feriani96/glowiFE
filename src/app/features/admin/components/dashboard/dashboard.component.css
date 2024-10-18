@@ -1,25 +1,91 @@
-.main-image {
-  width: 300px;
-  height: auto;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+.container {
+  padding: 10px;
+  justify-content: space-between;
+
 }
 
-.thumbnails {
+.product-card {
+  font-family: "Neue Haas Grotesk Display Pro Medium";
+  text-align: center;
+  height: 600px; /* Augmenter la hauteur du produit pour plus d'espace */
+  width: 100%; 
+  margin: 0 0 37px 20px;
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 8px; /* Coins arrondis pour un effet visuel agréable */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Ombre pour ajouter du relief */
 }
 
-.thumbnail {
-  width: 80px;
-  height: auto;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s;
+.product-tile {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: block;
 }
 
-.thumbnail:hover {
-  transform: scale(1.1);
+.product-title {
+  font-size: 16px; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.product-image-container {
+  width: 100%;
+  height: 70%; /* Augmenter la hauteur de l'image pour occuper plus d'espace */
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ddd; /* Bordure autour de l'image pour se coordonner avec la carte */
+}
+
+.product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Garder l'image entièrement visible sans zoom */
+  object-position: center;
+  display: block;
+}
+
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  height: 30%; /* Ajuster la hauteur des détails pour une meilleure proportion */
+}
+
+.product-info {
+  text-align: center;
+  padding: 5px;
+  font-size: 14px; /* Augmenter légèrement la taille du texte pour améliorer la lisibilité */
+}
+
+.product-info p {
+  margin: 4px 0;
+}
+
+.color-list {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.color-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid #ddd;
+}
+
+mat-grid-list {
+  padding: 10px;
+  margin: 0 auto; /* Centrer le grid */
+}
+
+mat-grid-tile {
+  padding: 5px; /* Espacement interne pour chaque carte produit */
 }
