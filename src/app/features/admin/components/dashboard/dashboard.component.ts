@@ -18,66 +18,68 @@ export class DashboardComponent implements OnInit {
     private adminService: AdminService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getProducts();
     this.searchProductFrom = this.fb.group({
-      title: [null, [Validators.required]]
+      title: [null]
     });
   }
 
-  // Function to retrieve products from the API
+  // Function to retrieve all products from the API
   getProducts(): void {
     this.adminService.getAllProducts().subscribe(
       (res) => {
-        console.log('API response:', res);
         this.products = res;
-        console.log('Retrieved products:', this.products);
-
         this.products.forEach((product: any) => {
-          console.log('Product:', product);
-          // Initialize the default image for each product
           this.selectedImages[product.id] = 0;
         });
       },
       (error) => {
         console.error('Error retrieving products:', error);
-        this.snackBar.open('Error loading products', 'Close', {
-          duration: 3000
-        });
       }
     );
   }
 
-  // Function to submit the search form
-  submitForm(): void {
-    if (this.searchProductFrom.invalid) {
-      this.snackBar.open('Please enter a valid keyword', 'Close', {
-        duration: 3000
-      });
+  // Function to handle search input changes
+  onInputChange(): void {
+    const searchValue = this.searchProductFrom.get('title')?.value;
+
+    if (!searchValue || searchValue.trim().length === 0) {
+      this.getProducts();
       return;
     }
 
-    const title = this.searchProductFrom.get('title')!.value;
-    this.adminService.getAllProductByName(title).subscribe(
+    const lowercasedSearchValue = searchValue.toLowerCase();
+
+    // Search products by name, using the lowercase string
+    this.adminService.getAllProductByName(lowercasedSearchValue).subscribe(
       (res) => {
-        console.log('API response:', res);
         this.products = res;
+
         this.products.forEach((product: any) => {
           this.selectedImages[product.id] = 0;
         });
+
+        if (this.products.length === 0) {
+          this.products = [];
+        }
       },
       (error) => {
         console.error('Error retrieving products:', error);
-        this.snackBar.open('Error loading products', 'Close', {
-          duration: 3000
-        });
+        this.products = [];
       }
     );
   }
 
-  // Function to get the current image URL
+  // Function to reset the search and return to the initial state
+  resetSearch(): void {
+    this.searchProductFrom.get('title')?.setValue('');  
+    this.getProducts(); 
+  }
+
+  // Function to get the current image URL of a product
   currentImageUrl(product: any): string {
     return product.imageUrls[this.selectedImages[product.id] || 0];
   }
@@ -93,7 +95,7 @@ export class DashboardComponent implements OnInit {
     }, 1000);
   }
 
-  // Stop image rotation when the mouse leaves the product
+  // Stop image rotation when the mouse leaves the product element
   stopImageRotation(): void {
     clearInterval(this.imageRotationInterval);
   }
