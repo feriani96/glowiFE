@@ -1,1 +1,64 @@
-<p>dashboard works!</p>
+<form [formGroup]="searchProductFrom" class="search-form">
+    <mat-form-field appearance="outline" class="search-input">
+      <mat-label>Enter Keyword to search</mat-label>
+      <input matInput formControlName="title" (input)="onInputChange()" placeholder="Search products...">
+      
+      <!-- Le bouton "X" s'affiche uniquement si le champ contient du texte -->
+      <button mat-icon-button matSuffix type="button" *ngIf="searchProductFrom.get('title')?.value" (click)="resetSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+  
+  <!-- Affichage des produits, avec une condition si aucun produit n'est trouvé -->
+  <div *ngIf="products.length === 0">
+    <p>No products found</p>
+  </div>
+  
+  
+  <div class="product-list">
+    <mat-card class="product-card" *ngFor="let product of products">
+      <div class="product-image" (mouseenter)="startImageRotation(product)" (mouseleave)="stopImageRotation()">
+        <img mat-card-image [src]="currentImageUrl(product)" alt="Image produit">
+      </div>
+  
+      <div class="product-details">
+        <!-- Liste of colors-->
+        <div *ngIf="product.colors && product.colors.length > 0" class="color-list">
+          <span *ngFor="let color of product.colors" [ngStyle]="{'background-color': color}" class="color-circle"></span>
+        </div>
+  
+        <!-- Name-->
+        <h2 class="product-name">{{product.name}}</h2>
+  
+        <!-- Description-->
+        <p class="product-description">{{product.description}}</p>
+  
+        <!-- Price -->
+        <div class="product-info">
+          <div class="info-row center-info">
+            <span class="info-value">{{product.price}}Dt</span>
+          </div>
+  
+          <!-- Category -->
+          <div class="info-row category-row">
+            <span class="category-label">Category:</span>
+            <span class="category-value">{{product.categoryName}}</span>
+          </div>
+  
+          <!-- Quantity -->
+          <div class="info-row">
+            <span class="info-label">Quantity:</span>
+            <span class="info-value">{{product.quantity}}</span>
+          </div>
+        </div>
+  
+        <!-- Actions for button -->
+        <div class="actions">
+          <button mat-raised-button class="update-button" (click)="addToCart(product.id)">
+            ADD TO CART
+          </button>    
+        </div>
+      </div>
+    </mat-card>
+  </div>
