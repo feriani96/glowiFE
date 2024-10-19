@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getProducts();  // Correct method to load products
     this.searchProductFrom = this.fb.group({
       title: [null]
     });
@@ -98,5 +98,25 @@ export class DashboardComponent implements OnInit {
   // Stop image rotation when the mouse leaves the product element
   stopImageRotation(): void {
     clearInterval(this.imageRotationInterval);
+  }
+
+  // Function to delete a product
+  deleteProduct(productId: string): void {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
+ 
+      this.adminService.deleteProduct(productId).subscribe(
+        () => {
+          this.snackBar.open('Produit supprimé avec succès', 'Fermer', {
+            duration: 3000
+          });
+          this.getProducts(); // Recharge les produits après suppression
+        },
+        (error) => {
+          this.snackBar.open('Erreur lors de la suppression du produit', 'Fermer', {
+            duration: 3000
+          });
+        }
+      );
+    }
   }
 }

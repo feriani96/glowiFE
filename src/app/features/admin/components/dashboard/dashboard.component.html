@@ -57,7 +57,7 @@
       <div class="actions">
         <button mat-raised-button  class="action-button" [routerLink]="'/admin/faq/' + product.id">FAQ</button>
         <button mat-raised-button  class="action-button" [routerLink]="'/admin/product/' + product.id">Update</button>
-        <button mat-raised-button  class="delete-button">Delete</button>
+        <button mat-raised-button  class="delete-button" (click)="deleteProduct(product.id)">Delete</button>
       </div>
     </div>
   </mat-card>

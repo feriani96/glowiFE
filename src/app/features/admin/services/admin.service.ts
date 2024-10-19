@@ -43,6 +43,10 @@ export class AdminService {
     });
   }
 
+  deleteProduct(productId: string) {
+    return this.http.delete(`${baseUrl}api/admin/product/${productId}`);
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
