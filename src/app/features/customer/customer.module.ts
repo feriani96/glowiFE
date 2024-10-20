@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/app/AngularMaterialModule';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
   declarations: [
     CustomerComponent,
-    DashboardComponent
+    DashboardComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

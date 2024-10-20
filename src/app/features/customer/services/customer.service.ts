@@ -14,19 +14,17 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-
   getAllProducts(): Observable<any> {
     return this.http.get(`${baseUrl}api/customer/products`, {
       headers: this.createAuthorizationHeader(),
     });
   }
 
-  getAllProductByName(name:any): Observable<any> {
+  getAllProductByName(name: any): Observable<any> {
     return this.http.get(`${baseUrl}api/customer/search/${name}`, {
       headers: this.createAuthorizationHeader(),
     });
   }
-
 
   addToCart(productId: any): Observable<any> {
     const cartDto = {
@@ -34,8 +32,15 @@ export class CustomerService {
       userId: UserStorageService.getUserId()
     };
 
-    // URL corrigée pour pointer vers le bon endpoint de l'API
     return this.http.post(`${baseUrl}api/customer/cart`, cartDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getCartByUserId(): Observable<any> {
+    const userId = UserStorageService.getUserId()
+
+    return this.http.get(`${baseUrl}api/customer/cart/${userId}`, {
       headers: this.createAuthorizationHeader(),
     });
   }
