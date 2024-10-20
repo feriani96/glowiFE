@@ -100,8 +100,17 @@ export class DashboardComponent implements OnInit {
     clearInterval(this.imageRotationInterval);
   }
 
-
-  addToCart(id: any){
-    
+  addToCart(id: any) {
+    this.customerService.addToCart(id).subscribe(
+      res => {
+        this.snackBar.open("Product Added To Cart Successfully", "Close", { duration: 5000 });
+      },
+      error => {
+        console.error('Error adding product to cart', error);  // Log the error
+        // Afficher un message générique d'échec
+        this.snackBar.open("Failed to add product to cart", "Close", { duration: 5000 });
+      }
+    );
   }
+  
 }
