@@ -47,6 +47,18 @@ export class AdminService {
     return this.http.delete(`${baseUrl}api/admin/product/${productId}`);
   }
 
+  addCoupon(couponDto: any): Observable<any> {
+    return this.http.post(`${baseUrl}api/admin/coupons`, couponDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getCoupon(): Observable<any> {
+    return this.http.get(`${baseUrl}api/admin/coupons`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);

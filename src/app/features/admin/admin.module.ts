@@ -10,6 +10,8 @@ import { AngularMaterialModule } from 'src/app/AngularMaterialModule';
 import { PostCategoryComponent } from './components/post-category/post-category.component';
 import { PostProductComponent } from './components/post-product/post-product.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PostCouponComponent } from './components/post-coupon/post-coupon.component';
+import { CouponsComponent } from './components/coupons/coupons.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     AdminComponent,
     DashboardComponent,
     PostCategoryComponent,
-    PostProductComponent
+    PostProductComponent,
+    PostCouponComponent,
+    CouponsComponent
   ],
   imports: [
     CommonModule,
