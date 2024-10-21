@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../services/customer.service';
@@ -15,6 +15,8 @@ export class CartComponent {
   order: any;
   selectedImages: { [key: string]: number } = {};
 
+  couponFrom!: FormGroup;
+
 
   constructor(
     private customerService: CustomerService,
@@ -25,7 +27,23 @@ export class CartComponent {
 
 
   ngOnInit(): void {
+    this.couponFrom = this.fb.group({
+      code: [null, [Validators.required]]
+    })
     this.getCart();
+  }
+
+  applyCoupon(){
+    this.customerService.applyCoupon(this.couponFrom.get(['code'])!.value).subscribe(res =>{
+      this.snackBar.open("Coupon Applied Successfully", 'close', {
+        duration: 5000
+      });
+      this.getCart();
+    }, error =>{
+      this.snackBar.open(error.error, 'close', {
+        duration: 5000
+      });
+    })
   }
 
   getCart() {

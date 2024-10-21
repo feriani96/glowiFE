@@ -39,11 +39,18 @@ export class CustomerService {
 
   getCartByUserId(): Observable<any> {
     const userId = UserStorageService.getUserId()
-
     return this.http.get(`${baseUrl}api/customer/cart/${userId}`, {
       headers: this.createAuthorizationHeader(),
     });
   }
+
+  applyCoupon(code: any): Observable<any> {
+    const userId = UserStorageService.getUserId()
+    return this.http.get(`${baseUrl}api/customer/coupon/${userId}/${code}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
 
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
