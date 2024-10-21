@@ -1,6 +1,10 @@
+.cart-wrapper {
+    display: flex; 
+}
+
 .cart-container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px; 
+    flex: 0 0 65%; 
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -82,12 +86,6 @@
     font-size: 16px;
 }
 
-.cart-summary {
-    margin-top: 20px;
-    border-top: 1px solid #eee;
-    padding-top: 15px;
-}
-
 .total-price {
     font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif;
     display: flex;
@@ -96,6 +94,40 @@
     font-weight: bold;
     padding: 5px 0;
 }
+
+.cart-summary {
+    border-top: 1px solid #eee; 
+    flex-grow: 1; 
+    padding: 20px; 
+    background-color: #f8f6f6; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+}
+
+.order-summary-title {
+    font-family: 'Neue Hass Grotesk Display Pro Semibold', sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration: none solid rgb(18, 18,18);
+    text-transform: uppercase;
+    word-spacing: 0;
+    font-weight: bold;
+}
+
+.total-price:first-of-type {
+    border-top: 1px solid #cfcfcf; 
+    padding-top: 10px; 
+}
+
+.total-price {
+    font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 5px 0;
+    color: rgb(70, 70, 70);
+}
+
 
 .actions {
     display: flex;

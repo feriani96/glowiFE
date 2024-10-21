@@ -1,34 +1,36 @@
 <div *ngIf="cartItems.length > 0; else emptyCart">
-    <div class="cart-container">
-        <h2 class="cart-title">Your Shopping Cart</h2>
-        <div class="cart-item" *ngFor="let item of cartItems">
-            <div class="product_info">
-                <div class="product-image">
-                    <img [src]="currentImageUrl(item)" alt="{{item.productName}}"
-                         *ngIf="currentImageUrl(item); else noImage">
-                </div>
-                <ng-template #noImage>
-                    <img src="default-image-url.jpg" alt="Default Image">
-                </ng-template>
+    <div class="cart-wrapper"> <!-- Nouveau conteneur pour flexbox -->
+        <div class="cart-container">
+            <h2 class="cart-title">Your Shopping Cart</h2>
+            <div class="cart-item" *ngFor="let item of cartItems">
+                <div class="product_info">
+                    <div class="product-image">
+                        <img [src]="currentImageUrl(item)" alt="{{item.productName}}"
+                             *ngIf="currentImageUrl(item); else noImage">
+                    </div>
+                    <ng-template #noImage>
+                        <img src="default-image-url.jpg" alt="Default Image">
+                    </ng-template>
 
-                <div class="product-details">
-                    <div class="item-row">
-                        <div class="item-name" [ngClass]="{ 'highlight': item.highlight }">
-                            {{item.productName}}
-                        </div>
+                    <div class="product-details">
+                        <div class="item-row">
+                            <div class="item-name" [ngClass]="{ 'highlight': item.highlight }">
+                                {{item.productName}}
+                            </div>
 
-                        <div class="price-container">
-                            <div class="item-price">{{item.price}}Dt</div>
-                        </div>
+                            <div class="price-container">
+                                <div class="item-price">{{item.price}}Dt</div>
+                            </div>
 
-                        <div class="quantity-controls">
-                            <button mat-icon-button [disabled]="item.quantity == 1">
-                                <mat-icon>remove_circle_outline</mat-icon>
-                            </button>
-                            <span class="quantity">{{item.quantity}}</span>
-                            <button mat-icon-button>
-                                <mat-icon>add_circle_outline</mat-icon>
-                            </button>
+                            <div class="quantity-controls">
+                                <button mat-icon-button [disabled]="item.quantity == 1">
+                                    <mat-icon>remove_circle_outline</mat-icon>
+                                </button>
+                                <span class="quantity">{{item.quantity}}</span>
+                                <button mat-icon-button>
+                                    <mat-icon>add_circle_outline</mat-icon>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -36,12 +38,13 @@
         </div>
 
         <div class="cart-summary">
+            <span class="order-summary-title">ORODER SUMMARY</span>
             <div class="total-price">
-                <span>TOTAL AMOUNT:</span>
+                <span>Total Amount</span>
                 <span>{{order.totalAmount}} Dt</span>
             </div>
             <div class="total-price">
-                <span>AMOUNT:</span>
+                <span>Amount</span>
                 <span>{{order.amount}} Dt</span>
             </div>
             <div class="total-price" *ngIf="order.couponName != null">
@@ -62,9 +65,7 @@
             </mat-form-field>
 
             <button mat-raised-button color="primary" type="submit">Apply Coupon</button>
-
         </form>
-
     </div>
 </div>
 
