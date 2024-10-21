@@ -67,5 +67,18 @@ export class CartComponent {
       : 'default-image-url.jpg';
   }
 
+  increaseQuantity(productId: any) {
+    this.customerService.increaseProductQuantity(productId).subscribe(
+      (response) => {
+        this.snackBar.open("Quantity increased successfully", 'close', { duration: 5000 });
+        this.getCart();  
+      },
+      (error) => {
+        this.snackBar.open("Error: " + error.error, 'close', { duration: 5000 });
+        console.error("Failed to increase product quantity:", error);
+      }
+    );
+  }
+  
 
 }

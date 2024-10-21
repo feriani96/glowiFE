@@ -1,10 +1,10 @@
 .cart-wrapper {
-    display: flex; 
+    display: flex;
 }
 
 .cart-container {
-    max-width: 800px; 
-    flex: 0 0 65%; 
+    max-width: 800px;
+    flex: 0 0 65%;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -49,31 +49,31 @@
 }
 
 .item-name {
-    font-size: 13px; 
+    font-size: 13px;
     color: #555;
-    font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif; 
-    word-wrap: break-word; 
-    max-width: 150px; 
+    font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif;
+    word-wrap: break-word;
+    max-width: 150px;
     flex-grow: 1;
 }
 
 .highlight {
-    color: #ff5722; 
+    color: #ff5722;
     font-weight: bold;
 }
 
 .price-container {
-    display: flex; 
-    flex-direction: column; 
-    margin-top: 5px; 
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
 }
 
 .item-price {
-    font-size: 13px; 
+    font-size: 13px;
     color: #333;
     font-weight: bold;
-    font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif; 
-    display: block; 
+    font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif;
+    display: block;
 }
 
 .quantity-controls {
@@ -96,27 +96,27 @@
 }
 
 .cart-summary {
-    border-top: 1px solid #eee; 
-    flex-grow: 1; 
-    padding: 20px; 
-    background-color: #f8f6f6; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    border-top: 1px solid #eee;
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f8f6f6;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .order-summary-title {
     font-family: 'Neue Hass Grotesk Display Pro Semibold', sans-serif;
     font-size: 14px;
     line-height: 19px;
-    text-decoration: none solid rgb(18, 18,18);
+    text-decoration: none solid rgb(18, 18, 18);
     text-transform: uppercase;
     word-spacing: 0;
     font-weight: bold;
 }
 
 .total-price:first-of-type {
-    border-top: 1px solid #cfcfcf; 
-    padding-top: 10px; 
+    border-top: 1px solid #cfcfcf;
+    padding-top: 10px;
 }
 
 .total-price {
@@ -133,10 +133,10 @@
     display: flex;
     justify-content: right;
     margin-top: 15px;
-  }
+}
 
-  .place-order-btn{
-    background-color: #000000; 
+.place-order-btn {
+    background-color: #000000;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -144,13 +144,12 @@
     transition: background-color 0.3s ease;
     font-family: "Neue Haas Grotesk Display Pro Medium";
 
-  }
-  
-  .place-order-btn:hover {
-    background-color: #c7c7c7; 
-    color: #000000;
+}
 
-  }
+.place-order-btn:hover {
+    background-color: #c7c7c7;
+    color: #000000;
+}
 
 .emptyCart {
     display: flex;
@@ -164,7 +163,39 @@
 
 .icon {
     font-size: 48px;
-    color: #ff5722; 
+    color: #ff5722;
+}
+
+.form-field {
+    width: 63%; 
+    margin-right: 10px; 
+}
+
+.submit-btn {
+    align-self: right; 
+}
+
+.container form {
+    display: flex;
+    align-items: center;
+}
+
+.submit-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: "Neue Haas Grotesk Display Pro Medium";
+    align-self: right; 
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-btn:hover {
+    background-color: #c7c7c7;
+    color: #000000;
 }
 
 
@@ -179,12 +210,12 @@
     }
 
     .price-container {
-        justify-content: space-between; 
-        width: 100%; 
+        justify-content: space-between;
+        width: 100%;
     }
 
     .quantity-controls {
-        justify-content: flex-end; 
-        width: auto; 
+        justify-content: flex-end;
+        width: auto;
     }
 }
