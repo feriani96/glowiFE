@@ -17,7 +17,6 @@ export class CartComponent {
 
   couponFrom!: FormGroup;
 
-
   constructor(
     private customerService: CustomerService,
     private snackBar: MatSnackBar,
@@ -25,25 +24,24 @@ export class CartComponent {
     public dialog: MatDialog
   ) { }
 
-
   ngOnInit(): void {
     this.couponFrom = this.fb.group({
       code: [null, [Validators.required]]
-    })
+    });
     this.getCart();
   }
 
-  applyCoupon(){
-    this.customerService.applyCoupon(this.couponFrom.get(['code'])!.value).subscribe(res =>{
+  applyCoupon() {
+    this.customerService.applyCoupon(this.couponFrom.get(['code'])!.value).subscribe(res => {
       this.snackBar.open("Coupon Applied Successfully", 'close', {
         duration: 5000
       });
       this.getCart();
-    }, error =>{
+    }, error => {
       this.snackBar.open(error.error, 'close', {
         duration: 5000
       });
-    })
+    });
   }
 
   getCart() {
@@ -67,18 +65,28 @@ export class CartComponent {
       : 'default-image-url.jpg';
   }
 
-  increaseQuantity(productId: any) {
-    this.customerService.increaseProductQuantity(productId).subscribe(
-      (response) => {
-        this.snackBar.open("Quantity increased successfully", 'close', { duration: 5000 });
-        this.getCart();  
-      },
-      (error) => {
-        this.snackBar.open("Error: " + error.error, 'close', { duration: 5000 });
-        console.error("Failed to increase product quantity:", error);
-      }
-    );
+  decreaseQuantity(productId: any) {
+    const item = this.cartItems.find(cartItem => cartItem.productId === productId);
+    
+    if (item && item.quantity > 1) { 
+      item.quantity -= 1; 
+      this.updateOrderTotal(-item.price); 
+    }
   }
-  
 
+  increaseQuantity(productId: any) {
+    const item = this.cartItems.find(cartItem => cartItem.productId === productId);
+    
+    if (item) {
+      item.quantity += 1; 
+      this.updateOrderTotal(item.price);
+    }
+  }
+
+  updateOrderTotal(price: number) {
+    if (this.order) {
+      this.order.totalAmount += price;
+      this.order.amount += price;
+    }
+  }
 }
