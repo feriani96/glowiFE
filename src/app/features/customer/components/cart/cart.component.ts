@@ -45,6 +45,8 @@ export class CartComponent {
   }
 
   getCart() {
+    this.cartItems =  []; 
+
     this.customerService.getCartByUserId().subscribe(res => {
       this.order = res;
 
@@ -65,28 +67,15 @@ export class CartComponent {
       : 'default-image-url.jpg';
   }
 
-  decreaseQuantity(productId: any) {
-    const item = this.cartItems.find(cartItem => cartItem.productId === productId);
-    
-    if (item && item.quantity > 1) { 
-      item.quantity -= 1; 
-      this.updateOrderTotal(-item.price); 
-    }
-  }
 
   increaseQuantity(productId: any) {
-    const item = this.cartItems.find(cartItem => cartItem.productId === productId);
-    
-    if (item) {
-      item.quantity += 1; 
-      this.updateOrderTotal(item.price);
-    }
+    this.customerService.increaseProductQuantity(productId).subscribe(res => {
+      this.snackBar.open('Product quantity increased.', 'clode', {duration:5000});
+      
+      this.getCart();
+    })
+
   }
 
-  updateOrderTotal(price: number) {
-    if (this.order) {
-      this.order.totalAmount += price;
-      this.order.amount += price;
-    }
-  }
+
 }

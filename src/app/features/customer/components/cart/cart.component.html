@@ -23,11 +23,11 @@
                             </div>
 
                             <div class="quantity-controls">
-                                <button mat-icon-button [disabled]="item.quantity == 1" (click)="decreaseQuantity(item.productId)">
+                                <button mat-icon-button [disabled]="item.quantity == 1" >
                                     <mat-icon>remove_circle_outline</mat-icon>
                                 </button>
                                 <span class="quantity">{{item.quantity}}</span>
-                                <button mat-icon-button (click)="increaseQuantity(item.productId)">
+                                <button mat-icon-button type="button" (click)="increaseQuantity(item.productId)">
                                     <mat-icon>add_circle_outline</mat-icon>
                                 </button>
                             </div>
