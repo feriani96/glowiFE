@@ -65,6 +65,12 @@ export class AdminService {
     });
   }
 
+  changeOrderStatus(orderId: string, status: string): Observable<any> {
+    return this.http.get(`${baseUrl}api/admin/order/${orderId}/${status}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);

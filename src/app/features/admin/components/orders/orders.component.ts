@@ -26,4 +26,15 @@ export class OrdersComponent {
       this.orders= res;
     })
   }
+
+  changeOrderStatus(orderId: string, status: string){
+    this.adminService.changeOrderStatus(orderId,status).subscribe(res=>{
+      if(res.id != null){
+        this.snackBar.open('Order Status Changed Successfully.', 'close', { duration: 5000 });
+        this.getPlacedOrders();
+      }else{
+        this.snackBar.open('Something Went Wrong!', 'close', { duration: 5000 });
+      }
+    })
+  }
 }
