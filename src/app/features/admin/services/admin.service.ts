@@ -71,6 +71,12 @@ export class AdminService {
     });
   }
 
+  postFAQ(productId: string, faqDto: any): Observable<any> {
+    return this.http.post(`${baseUrl}api/admin/faq/${productId}`, faqDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);

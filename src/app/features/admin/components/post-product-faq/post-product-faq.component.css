@@ -39,7 +39,7 @@
                 font-size: 13px;
             }
             
-            input::placeholder {
+            textarea::placeholder {
                 font-family: 'Neue Haas Grotesk Display Pro Medium', sans-serif;
                 font-size: 13px;
             }
