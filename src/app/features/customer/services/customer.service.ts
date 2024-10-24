@@ -67,13 +67,17 @@ export class CustomerService {
       productId: productId,
       userId: UserStorageService.getUserId()
     };
-
-    console.log(cartDto);
     return this.http.post(`${baseUrl}api/customer/deduction`, cartDto, {
       headers: this.createAuthorizationHeader(),
     });
   }
 
+  placeOrder(orderDto: any): Observable<any> {
+    orderDto.userId = UserStorageService.getUserId()
+    return this.http.post(`${baseUrl}api/customer/placeOrder`, orderDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
 
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();

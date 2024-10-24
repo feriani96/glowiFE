@@ -9,13 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/app/AngularMaterialModule';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CartComponent } from './components/cart/cart.component';
+import { PlaceOrderComponent } from './place-order/place-order.component';
 
 
 @NgModule({
   declarations: [
     CustomerComponent,
     DashboardComponent,
-    CartComponent
+    CartComponent,
+    PlaceOrderComponent
   ],
   imports: [
     CommonModule,

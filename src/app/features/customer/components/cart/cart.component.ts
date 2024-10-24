@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../services/customer.service';
+import { PlaceOrderComponent } from '../../place-order/place-order.component';
 
 @Component({
   selector: 'app-cart',
@@ -84,6 +85,10 @@ export class CartComponent {
       this.getCart();
     })
 
+  }
+
+  placeOrder(){
+    this.dialog.open(PlaceOrderComponent);
   }
 
 
