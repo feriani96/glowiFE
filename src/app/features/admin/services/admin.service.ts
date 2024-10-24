@@ -59,6 +59,12 @@ export class AdminService {
     });
   }
 
+  getPlacedOrders(): Observable<any> {
+    return this.http.get(`${baseUrl}api/admin/placedOrders`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);

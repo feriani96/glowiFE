@@ -12,6 +12,8 @@ import { PostProductComponent } from './components/post-product/post-product.com
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PostCouponComponent } from './components/post-coupon/post-coupon.component';
 import { CouponsComponent } from './components/coupons/coupons.component';
+import { OrdersComponent } from './components/orders/orders.component';
+
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { CouponsComponent } from './components/coupons/coupons.component';
     PostCategoryComponent,
     PostProductComponent,
     PostCouponComponent,
-    CouponsComponent
+    CouponsComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,8 @@ import { CouponsComponent } from './components/coupons/coupons.component';
     ReactiveFormsModule,
     HttpClientModule,
     AngularMaterialModule,
-    SharedModule
+    SharedModule,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
