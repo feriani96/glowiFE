@@ -77,6 +77,18 @@ export class AdminService {
     });
   }
 
+  getProductById(productId: any): Observable<any> {
+    return this.http.get(`${baseUrl}api/admin/product/${productId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  updateProduct(productId:any, productDto: any): Observable<any> {
+    return this.http.put(`${baseUrl}api/admin/product/${productId}`, productDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);

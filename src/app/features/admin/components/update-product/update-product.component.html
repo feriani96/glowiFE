@@ -1,0 +1,69 @@
+<div class="post-product-container">
+    <div class="image-uploader-section">
+        <app-image-uploader [imagePreviews]="imagePreviews"
+            (imageSelected)="onImagesSelected($event)"></app-image-uploader>
+    </div>
+
+
+    <!-- Formulaire à droite -->
+    <div class="form-section">
+        <h2>Update Product</h2>
+        <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Select a Category</mat-label>
+                <mat-select formControlName="categoryId" name="categoryId">
+                    <mat-option *ngFor="let category of listOfCategories" [value]="category.id">
+                        {{ category.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="productForm.get('categoryId')?.hasError('required')">This input is
+                    required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Name Product</mat-label>
+                <input matInput type="text" formControlName="name" placeholder="Name">
+                <mat-error *ngIf="productForm.get('name')?.hasError('required')">This input is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" formControlName="price" placeholder="Price" step="0.01">
+                <mat-error *ngIf="productForm.get('price')?.hasError('required')">This input is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" placeholder="Description"></textarea>
+                <mat-error *ngIf="productForm.get('description')?.hasError('required')">This input is
+                    required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Quantity</mat-label>
+                <input matInput type="number" formControlName="quantity" placeholder="Quantity">
+                <mat-error *ngIf="productForm.get('quantity')?.hasError('required')">This input is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Available Sizes</mat-label>
+                <mat-select formControlName="availableSizes" placeholder="Available Sizes" multiple>
+                    <mat-option *ngFor="let size of sizes" [value]="size">{{ size }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="productForm.get('availableSizes')?.hasError('required')">This input is
+                    required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Colors</mat-label>
+                <mat-select formControlName="colors" placeholder="Colors" multiple>
+                    <mat-option *ngFor="let color of colors" [value]="color">{{ color }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="productForm.get('colors')?.hasError('required')">This input is required!</mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">Update Product</button>
+        </form>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-image-uploader',
@@ -6,11 +6,12 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
   styleUrls: ['./image-uploader.component.css']
 })
 export class ImageUploaderComponent {
+  @Input() imagePreviews: string[] = ['', '', '', ''];
   @Output() imageSelected = new EventEmitter<(File | null)[]>();
   @ViewChild('fileInput') fileInput: any;
 
   selectedFiles: (File | null)[] = [null, null, null, null];  
-  imagePreviews: string[] = ['', '', '', ''];  
+  // imagePreviews: string[] = ['', '', '', ''];  
   mainImagePreview: string = 'assets/images/productAvatar.png';  
 
   // Ouvre le sélecteur de fichiers pour un index donné
@@ -28,7 +29,6 @@ export class ImageUploaderComponent {
         this.selectedFiles[index] = file;
         this.previewImage(file, index);
         this.imageSelected.emit(this.selectedFiles);
-        console.log(this.selectedFiles)
       }
     }
   }
