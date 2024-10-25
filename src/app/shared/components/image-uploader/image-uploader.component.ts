@@ -7,12 +7,13 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 })
 export class ImageUploaderComponent {
   @Input() imagePreviews: string[] = ['', '', '', ''];
+  @Input() mainImagePreview: string = '';
   @Output() imageSelected = new EventEmitter<(File | null)[]>();
+  @Output() imageRemoved = new EventEmitter<number>();
   @ViewChild('fileInput') fileInput: any;
 
   selectedFiles: (File | null)[] = [null, null, null, null];  
-  // imagePreviews: string[] = ['', '', '', ''];  
-  mainImagePreview: string = 'assets/images/productAvatar.png';  
+
 
   // Ouvre le sélecteur de fichiers pour un index donné
   triggerFileInput(index: number): void {
@@ -45,15 +46,18 @@ export class ImageUploaderComponent {
     reader.readAsDataURL(file);
   }
 
-  // Met à jour l'image principale lors du clic sur une image secondaire
+  // update image 
   setMainImage(index: number): void {
     this.mainImagePreview = this.imagePreviews[index];
   }
 
-  // Supprime une image
   removeImage(index: number): void {
     this.imagePreviews[index] = '';
     this.selectedFiles[index] = null;
+
+    this.imageRemoved.emit(index);
+    this.imageSelected.emit(this.selectedFiles);
+    
     if (this.imagePreviews.every(img => img === '')) {
       this.mainImagePreview = 'assets/images/productAvatar.png';
     } else if (this.mainImagePreview === this.imagePreviews[index]) {

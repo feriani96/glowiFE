@@ -17,11 +17,12 @@ export class UpdateProductComponent {
   listOfCategories: any = [];
   selectedFiles: (File | null)[] = [null, null, null, null];
   imagePreviews: string[] = ['', '', '', ''];
-  imageSelected: string | null = 'assets/images/productAvatar.png';
+  mainImagePreview: string = '';
   colors: string[] = ['Red', 'Green', 'Blue'];
   sizes: string[] = ['S', 'M', 'L', 'XL'];
 
-  imgChanged=false;
+  removedImageIndices: number[] = [];
+  imgChanged = false;
 
 
   constructor(
@@ -62,12 +63,12 @@ export class UpdateProductComponent {
   getProductById() {
     this.adminService.getProductById(this.productId).subscribe(res => {
       this.productForm.patchValue(res);
+      console.log(res)
       if (res.imageUrls && res.imageUrls.length > 0) {
         this.imagePreviews = res.imageUrls;
+        this.mainImagePreview = res.imageUrls[0];
+        this.onImagesSelected = res.imageUrls[0];
         this.selectedFiles = this.imagePreviews.map(() => null);
-      } else {
-        this.imagePreviews = ['', '', '', ''];
-        this.selectedFiles = [null, null, null, null];
       }
     });
   }
@@ -83,20 +84,19 @@ export class UpdateProductComponent {
       formData.append('availableSizes', JSON.stringify(this.productForm.get('availableSizes')!.value));
       formData.append('colors', JSON.stringify(this.productForm.get('colors')!.value));
 
-
-  // Si l'utilisateur n'a pas sélectionné de nouvelles images, incluez les anciennes images
-  if (!this.imgChanged && this.imagePreviews.length > 0) {
-    this.imagePreviews.forEach((url, index) => {
-        formData.append(`image${index}`, url); // Vous pouvez aussi utiliser une logique pour passer les URL
-    });
-} else if (this.imgChanged && this.selectedFiles) {
-    this.selectedFiles.forEach((file, index) => {
-        if (file) {
+      if (this.imgChanged) {
+        this.selectedFiles.forEach((file, index) => {
+          if (file) {
             formData.append(`image${index}`, file);
-        }
-    });
-}
-      
+          }
+        });
+      } else {
+        this.imagePreviews.forEach((url, index) => {
+          formData.append(`existingImageUrls[${index}]`, url);
+        });
+      }
+
+      this.removedImageIndices.forEach(index => formData.append('removedImageIndices', index.toString()));
 
       this.adminService.updateProduct(this.productId, formData).subscribe((res) => {
         if (res.id != null) {
@@ -116,14 +116,16 @@ export class UpdateProductComponent {
     }
   }
 
-
-
   onImagesSelected(files: (File | null)[]) {
     this.selectedFiles = files;
 
     this.imgChanged = true;
-    //this.selectedFiles = [null, null, null, null];
 
+  }
+
+  onImageRemoved(index: number) {
+    this.removedImageIndices.push(index);
+    this.imagePreviews[index] = '';
   }
 
 

@@ -1,10 +1,8 @@
 <div class="post-product-container">
-    <!-- Section des images (grande + miniatures) à gauche -->
     <div class="image-uploader-section">
         <app-image-uploader (imageSelected)="onImageSelected($event)"></app-image-uploader>
     </div>
 
-    <!-- Formulaire à droite -->
     <div class="form-section">
         <h2>Add Product</h2>
         <form [formGroup]="productForm" (ngSubmit)="addProduct()">

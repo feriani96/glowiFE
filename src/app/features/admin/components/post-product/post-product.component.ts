@@ -34,7 +34,6 @@ export class PostProductComponent implements OnInit {
       quantity: [null, [Validators.required]],
       availableSizes: [null, [Validators.required]],
       colors: [null, [Validators.required]],
-      // Suppression de imgUrls, car cela sera géré via FormData
     });
     this.getAllCategories();
   }
@@ -74,7 +73,6 @@ export class PostProductComponent implements OnInit {
 
       console.log('FormData construit:', formData);
       
-      // Envoi du produit au backend
       this.adminService.addProduct(formData).subscribe((res) => {
         if (res.id != null) {
           this.snackBar.open('Produit publié avec succès !', 'Fermer', {
@@ -96,8 +94,6 @@ export class PostProductComponent implements OnInit {
   onImageSelected(files: (File | null)[]): void {
     this.selectedFiles = files;
     console.log('Fichiers sélectionnés:', this.selectedFiles);
-  
-    // Filtrer les fichiers nulls et mapper uniquement les fichiers valides
     this.imagePreviews = this.selectedFiles.filter((file): file is File => file !== null)
                                             .map((file: File) => URL.createObjectURL(file));
   
