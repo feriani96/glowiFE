@@ -12,9 +12,10 @@ import { AdminService } from '../../services/admin.service';
 export class PostProductComponent implements OnInit {
   productForm!: FormGroup;
   listOfCategories: any = [];
-  selectedFiles: (File | null)[] = [null, null, null, null]; // Maximum de 4 fichiers d'images
-  imagePreviews: string[] = ['', '', '', ''];  // Aperçus des images
+  selectedFiles: (File | null)[] = [null, null, null, null];
+  imagePreviews: string[] = ['', '', '', ''];  
   imageSelected: string | null = 'assets/images/productAvatar.png';
+  mainImagePreview: string = '';
   colors: string[] = ['Red', 'Green', 'Blue'];
   sizes: string[] = ['S', 'M', 'L', 'XL'];
 
@@ -44,7 +45,7 @@ export class PostProductComponent implements OnInit {
         this.listOfCategories = res;
       },
       error => {
-        this.snackBar.open('Erreur lors de la récupération des catégories', 'Fermer', {
+        this.snackBar.open('Error fetching categories', 'Close', {
           duration: 5000
         });
       }
@@ -53,7 +54,7 @@ export class PostProductComponent implements OnInit {
 
   addProduct(): void {
     if (this.productForm.valid) {
-      console.log('Formulaire valide, envoi des données...');
+      console.log('Form is valid, sending data...');
 
       const formData: FormData = new FormData();
       formData.append('categoryId', this.productForm.get('categoryId')!.value);
@@ -64,18 +65,18 @@ export class PostProductComponent implements OnInit {
       formData.append('availableSizes', JSON.stringify(this.productForm.get('availableSizes')!.value));
       formData.append('colors', JSON.stringify(this.productForm.get('colors')!.value));
 
-      // Ajout des images sélectionnées
+      // Adding selected images
       this.selectedFiles.forEach((file, index) => {
         if (file) {
           formData.append(`image${index}`, file);
         }
       });
 
-      console.log('FormData construit:', formData);
+      console.log('Constructed FormData:', formData);
       
       this.adminService.addProduct(formData).subscribe((res) => {
         if (res.id != null) {
-          this.snackBar.open('Produit publié avec succès !', 'Fermer', {
+          this.snackBar.open('Product successfully posted!', 'Close', {
             duration: 5000
           });
           this.router.navigateByUrl('/admin/dashboard');
@@ -93,11 +94,10 @@ export class PostProductComponent implements OnInit {
 
   onImageSelected(files: (File | null)[]): void {
     this.selectedFiles = files;
-    console.log('Fichiers sélectionnés:', this.selectedFiles);
+    console.log('Selected files:', this.selectedFiles);
     this.imagePreviews = this.selectedFiles.filter((file): file is File => file !== null)
                                             .map((file: File) => URL.createObjectURL(file));
-  
-    console.log('Aperçus d\'images:', this.imagePreviews);
+      console.log('Image previews:', this.imagePreviews);
   }
   
 }

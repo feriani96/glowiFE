@@ -79,10 +79,12 @@ export class DashboardComponent implements OnInit {
     this.getProducts(); 
   }
 
-  // Function to get the current image URL of a product
   currentImageUrl(product: any): string {
-    return product.imageUrls[this.selectedImages[product.id] || 0];
+    return product.imageUrls && product.imageUrls.length > 0 
+      ? product.imageUrls[this.selectedImages[product.id] || 0] 
+      : 'assets/images/productAvatar.png';
   }
+  
 
   // Start image rotation on hover
   startImageRotation(product: any): void {

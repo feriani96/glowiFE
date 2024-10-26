@@ -10,8 +10,15 @@
         <img *ngIf="imagePreviews[i]" [src]="imagePreviews[i]" alt="Image Preview" class="thumbnail" />
         <span *ngIf="!imagePreviews[i]">+</span>
       </div>
-      <button *ngIf="imagePreviews[i]" mat-icon-button (click)="removeImage(i)">
+
+      <!-- Bouton Remove pour le composant post-product -->
+      <button *ngIf="imagePreviews[i] && !showUpdateButton" mat-icon-button (click)="removeImage(i)">
         <mat-icon>delete</mat-icon>
+      </button>
+
+      <!-- Bouton Update pour le composant update-product -->
+      <button *ngIf="imagePreviews[i] && showUpdateButton" mat-icon-button (click)="updateImage(i)" style="font-size: 16px;">
+        <mat-icon style="font-size: 18px;">edit</mat-icon> <!-- Icone de stylo pour mise à jour -->
       </button>
     </div>
   </div>

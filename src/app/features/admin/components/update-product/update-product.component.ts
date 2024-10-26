@@ -24,7 +24,6 @@ export class UpdateProductComponent {
   removedImageIndices: number[] = [];
   imgChanged = false;
 
-
   constructor(
     private fb: FormBuilder,
     private adminService: AdminService,
@@ -53,25 +52,26 @@ export class UpdateProductComponent {
         this.listOfCategories = res;
       },
       error => {
-        this.snackBar.open('Erreur lors de la récupération des catégories', 'Fermer', {
+        this.snackBar.open('Error fetching categories', 'Close', {
           duration: 5000
         });
       }
     );
   }
 
+
   getProductById() {
     this.adminService.getProductById(this.productId).subscribe(res => {
       this.productForm.patchValue(res);
-      console.log(res)
       if (res.imageUrls && res.imageUrls.length > 0) {
         this.imagePreviews = res.imageUrls;
-        this.mainImagePreview = res.imageUrls[0];
-        this.onImagesSelected = res.imageUrls[0];
-        this.selectedFiles = this.imagePreviews.map(() => null);
+        this.mainImagePreview = res.imageUrls[0];  // Use the first image as the main image if available
+      } else {
+        this.mainImagePreview = 'assets/images/productAvatar.png';  
       }
     });
   }
+  
 
   updateProduct(): void {
     if (this.productForm.valid) {
@@ -100,7 +100,7 @@ export class UpdateProductComponent {
 
       this.adminService.updateProduct(this.productId, formData).subscribe((res) => {
         if (res.id != null) {
-          this.snackBar.open('Produit updated avec succès !', 'Fermer', {
+          this.snackBar.open('Product updated successfully!', 'Close', {
             duration: 5000
           });
           this.router.navigateByUrl('/admin/dashboard');
