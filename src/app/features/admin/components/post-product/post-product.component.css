@@ -23,3 +23,17 @@ mat-form-field {
 button {
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .post-product-container {
+    flex-direction: column; 
+  }
+
+  .image-uploader-section, 
+  .form-section {
+    width: 100%; 
+    padding: 0 10px; 
+    box-sizing: border-box; 
+  
+  }
+}
