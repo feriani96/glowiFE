@@ -2,9 +2,10 @@
   <mat-form-field appearance="outline" class="search-input">
     <mat-label>Enter Keyword to search</mat-label>
     <input matInput formControlName="title" (input)="onInputChange()" placeholder="Search products...">
-    
+
     <!-- Le bouton "X" s'affiche uniquement si le champ contient du texte -->
-    <button mat-icon-button matSuffix type="button" *ngIf="searchProductFrom.get('title')?.value" (click)="resetSearch()">
+    <button mat-icon-button matSuffix type="button" *ngIf="searchProductFrom.get('title')?.value"
+      (click)="resetSearch()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
@@ -36,8 +37,15 @@
 
       <!-- Price -->
       <div class="product-info">
-        <div class="info-row center-info">
-          <span class="info-value">{{product.price}}Dt</span>
+        <div class="info-row price-row">
+          <span class="price-label">Price:</span>
+          <span class="price-value">{{product.price}} DT</span>
+        </div>
+
+        <!-- Quantity -->
+        <div class="info-row quantity-row">
+          <span class="quantity-label">Quantity:</span>
+          <span class="quantity-value">{{product.quantity}}</span>
         </div>
 
         <!-- Category -->
@@ -45,19 +53,13 @@
           <span class="category-label">Category:</span>
           <span class="category-value">{{product.categoryName}}</span>
         </div>
-
-        <!-- Quantity -->
-        <div class="info-row">
-          <span class="info-label">Quantity:</span>
-          <span class="info-value">{{product.quantity}}</span>
-        </div>
       </div>
 
       <!-- Actions for button -->
       <div class="actions">
-        <button mat-raised-button  class="action-button" [routerLink]="'/admin/faq/' + product.id">FAQ</button>
-        <button mat-raised-button  class="action-button" [routerLink]="'/admin/product/' + product.id">Update</button>
-        <button mat-raised-button  class="delete-button" (click)="deleteProduct(product.id)">Delete</button>
+        <button mat-raised-button class="action-button" [routerLink]="'/admin/faq/' + product.id">FAQ</button>
+        <button mat-raised-button class="action-button" [routerLink]="'/admin/product/' + product.id">Update</button>
+        <button mat-raised-button class="delete-button" (click)="deleteProduct(product.id)">Delete</button>
       </div>
     </div>
   </mat-card>
