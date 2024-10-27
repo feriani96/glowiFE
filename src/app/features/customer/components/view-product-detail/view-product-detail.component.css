@@ -27,6 +27,7 @@ body {
 .product-gallery {
     display: flex;
     gap: 10px;
+    margin-right: 20px;
 }
 
 .thumbnail-list {
@@ -56,12 +57,14 @@ body {
 /* Détails du produit */
 .product-details {
     flex: 2;
+    font-family: "Neue Haas Grotesk Display Pro Medium", Arial, sans-serif;
 }
 
-.product-name {
+.product-name h2{
     font-size: 1.8em;
     color: #333;
     margin: 0 0 10px;
+    cursor: pointer !important;
 }
 
 .product-description {
@@ -72,7 +75,7 @@ body {
 
 .product-price {
     font-size: 1.5em;
-    color: #e67e22;
+    color: #000000;
     margin: 0 0 10px;
 }
 
@@ -170,4 +173,81 @@ body {
     .section-heading {
         font-size: 1.5em;
     }
+}
+
+/* Titre des sections */
+.section-heading {
+    font-size: 2em;
+    color: #333;
+    margin: 30px 0 20px;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+}
+
+/* Liste des avis */
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Carte d'avis */
+.review-card {
+    display: flex;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image d'avis */
+.review-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #e67e22;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+/* Détails de l'avis */
+.review-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Description de l'avis */
+.review-details h2 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0 0 5px;
+    font-weight: bold;
+}
+
+/* Informations sur l'utilisateur et la note */
+.details-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.rating {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.username {
+    color: #555;
+    font-weight: bold;
 }

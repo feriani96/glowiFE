@@ -1,37 +1,19 @@
 <div class="container">
     <div class="product-card">
-        <!-- <ng-container *ngFor="let imageUrl of product.imageUrls; let i = index">
-            <img 
-                [src]="imageUrl" 
-                alt="product-image" 
-                (click)="selectedImages[product.id] = i" 
-                [class.selected]="selectedImages[product.id] === i"
-            >
-        </ng-container> -->
-
         <div class="product-gallery">
             <!-- Sidebar Miniatures -->
             <div class="thumbnail-list">
-              <div 
-                *ngFor="let imageUrl of product.imageUrls; let i = index" 
-                (click)="setSelectedImage(i)" 
-                [class.selected]="i === selectedImageIndex">
-                <img [src]="imageUrl" alt="product-thumbnail">
-              </div>
+                <div *ngFor="let imageUrl of product.imageUrls; let i = index" (click)="setSelectedImage(i)"
+                    [class.selected]="i === selectedImageIndex">
+                    <img [src]="imageUrl" alt="product-thumbnail">
+                </div>
             </div>
-          
+
             <!-- Image Principale -->
             <div class="main-image">
-              <img [src]="product.imageUrls[selectedImageIndex]" alt="product-main-image">
+                <img [src]="product.imageUrls[selectedImageIndex]" alt="product-main-image">
             </div>
-          </div>
-
-
-
-
-
-
-
+        </div>
 
         <div class="product-details">
             <h2 class="product-name" *ngIf="product">{{ product.name }}</h2>
@@ -53,7 +35,7 @@
             <div class="review-details">
                 <h2>{{ review.description }}</h2>
                 <div class="details-row">
-                    <p class="rating">Rating: {{ review.rating }} -</p>
+                    <p class="rating">Rating: {{ review.rating }} </p>
                     <p class="username">UserName: {{ review.userName }}</p>
                 </div>
             </div>

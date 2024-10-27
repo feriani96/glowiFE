@@ -15,10 +15,7 @@ export class ViewProductDetailComponent {
   FAQS: any[] = [];
   reviews: any[] = [];
 
-  //selectedImages: { [key: string]: number } = {};
   selectedImageIndex: number = 0; 
-
-
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -44,13 +41,7 @@ export class ViewProductDetailComponent {
     })
   }
 
-  //image Product
-  // currentImageUrl(product: any): string {
-  //   return product.imageUrls && product.imageUrls.length > 0
-  //     ? product.imageUrls[0]
-  //     : 'default-image-url.jpg';
-  // }
-
+  //image product
   setSelectedImage(index: number) {
     this.selectedImageIndex = index;
   }
