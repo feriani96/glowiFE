@@ -59,7 +59,6 @@ export class UpdateProductComponent {
     );
   }
 
-
   getProductById() {
     this.adminService.getProductById(this.productId).subscribe(res => {
       this.productForm.patchValue(res);
@@ -72,7 +71,6 @@ export class UpdateProductComponent {
     });
   }
   
-
   updateProduct(): void {
     if (this.productForm.valid) {
       const formData: FormData = new FormData();
@@ -118,9 +116,7 @@ export class UpdateProductComponent {
 
   onImagesSelected(files: (File | null)[]) {
     this.selectedFiles = files;
-
     this.imgChanged = true;
-
   }
 
   onImageRemoved(index: number) {

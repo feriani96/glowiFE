@@ -144,6 +144,36 @@
 
   }
   
+  @media (max-width: 768px) {
+    .search-input {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .product-card {
+      width: calc(33.33% - 10px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .product-card {
+      width: calc(50% - 10px);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .product-card {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .product-image {
+      height: 300px;
+    }
+  }
   
   
   
