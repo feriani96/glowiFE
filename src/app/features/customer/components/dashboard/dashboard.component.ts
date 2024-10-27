@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getProducts();  // Correct method to load products
+    this.getProducts();  
     this.searchProductFrom = this.fb.group({
       title: [null]
     });

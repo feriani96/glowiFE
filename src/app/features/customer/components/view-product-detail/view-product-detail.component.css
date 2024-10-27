@@ -1,155 +1,173 @@
 /* Styles de base pour le corps */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f8f8; /* Fond léger pour un aspect doux */
+    background-color: #f8f8f8;
     margin: 0;
     padding: 0;
 }
 
 /* Conteneur principal */
 .container {
-    max-width: 1200px; /* Largeur maximale pour le contenu */
-    margin: 0 auto; /* Centrer le conteneur */
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
 /* Card de produit */
 .product-card {
-    background-color: #ffffff; /* Couleur blanche pour le produit */
-    border-radius: 10px; /* Coins arrondis */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-    display: flex; /* Utilisation de flex pour aligner les éléments */
-    margin-bottom: 30px; /* Espacement entre les cartes */
-    padding: 15px; /* Espacement interne */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    margin-bottom: 30px;
+    padding: 15px;
 }
 
-/* Image du produit */
-.product-image {
-    flex: 1; /* Laisse l'image prendre 1/2 de l'espace */
-    margin-right: 15px; /* Espace entre l'image et les détails */
+/* image product style */
+.product-gallery {
+    display: flex;
+    gap: 10px;
 }
 
-.product-image img {
-    width: 100%; /* Laisse l'image prendre toute la largeur de son conteneur */
-    height: auto; /* Conserve le ratio d'aspect */
-    max-width: 400px; /* Limite la largeur maximale à 400px */
+.thumbnail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumbnail-list img {
+    width: 70px;
+    height: 100px;
+    cursor: pointer;
+    object-fit: cover;
+    border: 2px solid transparent;
+}
+
+.thumbnail-list .selected img {
+    border-color: #007bff;
+}
+
+.main-image img {
+    width: 340px;
+    height: 460px;
+    object-fit: cover;
 }
 
 /* Détails du produit */
 .product-details {
-    flex: 2; /* Détails prennent 2/3 de l'espace */
+    flex: 2;
 }
 
 .product-name {
-    font-size: 1.8em; /* Taille de police pour le nom du produit */
-    color: #333; /* Couleur de texte */
-    margin: 0 0 10px; /* Marges */
+    font-size: 1.8em;
+    color: #333;
+    margin: 0 0 10px;
 }
 
 .product-description {
-    font-size: 1.2em; /* Taille de police pour la description */
-    color: #666; /* Couleur de texte plus claire */
+    font-size: 1.2em;
+    color: #666;
     margin: 0 0 10px;
 }
 
 .product-price {
-    font-size: 1.5em; /* Taille de police pour le prix */
-    color: #e67e22; /* Couleur du prix */
+    font-size: 1.5em;
+    color: #e67e22;
     margin: 0 0 10px;
 }
 
 .product-category {
-    font-size: 1em; /* Taille de police pour la catégorie */
-    color: #999; /* Couleur grise pour la catégorie */
+    font-size: 1em;
+    color: #999;
 }
 
 /* Titres de section */
 .section-heading {
-    font-size: 2em; /* Taille de police pour le titre */
-    margin: 30px 0 10px; /* Marges autour du titre */
-    color: #333; /* Couleur de texte pour le titre */
+    font-size: 2em;
+    margin: 30px 0 10px;
+    color: #333;
 }
 
 /* Liste des avis */
 .review-list,
 .faq-list {
-    margin-bottom: 30px; /* Espacement entre les listes */
+    margin-bottom: 30px;
 }
 
 /* Carte d'avis */
 .review-card,
 .faq-card {
-    background-color: #ffffff; /* Fond blanc */
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
-    padding: 15px; /* Espacement interne */
-    margin-bottom: 15px; /* Espacement entre les cartes */
-    display: flex; /* Flex pour la mise en page */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
 }
 
 /* Image d'avis */
 .review-image img {
-    width: 60px; /* Largeur de l'image d'avis */
-    height: 60px; /* Hauteur de l'image d'avis */
-    border-radius: 50%; /* Arrondir l'image */
-    margin-right: 10px; /* Espacement entre l'image et le texte */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 /* Détails de l'avis */
 .review-details {
-    flex-grow: 1; /* Permet à cette section de prendre plus d'espace */
+    flex-grow: 1;
 }
 
 /* Éléments d'avis */
 .rating,
 .username {
-    font-size: 0.9em; /* Taille de police pour le rating et le nom d'utilisateur */
-    color: #777; /* Couleur grise */
+    font-size: 0.9em;
+    color: #777;
 }
 
 /* Détails de FAQ */
 .faq-details {
-    margin-left: 10px; /* Espacement entre la question et la réponse */
+    margin-left: 10px;
 }
 
 .question {
-    font-weight: bold; /* Mettre la question en gras */
+    font-weight: bold;
 }
 
 .answer {
-    margin-top: 5px; /* Espacement entre question et réponse */
+    margin-top: 5px;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .product-card {
-        flex-direction: column; /* Colonne pour les petits écrans */
+        flex-direction: column;
     }
 
     .product-image {
-        margin-right: 0; /* Retirer l'espacement pour les petits écrans */
-        margin-bottom: 15px; /* Ajouter un espacement en bas */
+        margin-right: 0;
+        margin-bottom: 15px;
     }
 
     .product-image img {
-        max-width: 100%; /* Ajuste l'image pour occuper toute la largeur sur mobile */
+        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     .product-name {
-        font-size: 1.5em; /* Réduction de la taille de police pour petits écrans */
+        font-size: 1.5em;
     }
 
     .product-description {
-        font-size: 1em; /* Réduction de la taille de police pour petits écrans */
+        font-size: 1em;
     }
 
     .product-price {
-        font-size: 1.2em; /* Réduction de la taille de police pour petits écrans */
+        font-size: 1.2em;
     }
 
     .section-heading {
-        font-size: 1.5em; /* Réduction de la taille de police pour petits écrans */
+        font-size: 1.5em;
     }
 }

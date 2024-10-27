@@ -15,6 +15,11 @@ export class ViewProductDetailComponent {
   FAQS: any[] = [];
   reviews: any[] = [];
 
+  //selectedImages: { [key: string]: number } = {};
+  selectedImageIndex: number = 0; 
+
+
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private customerService: CustomerService,
@@ -31,18 +36,23 @@ export class ViewProductDetailComponent {
       this.FAQS = res.faqDtoList;
       this.reviews = [];
 
-      // Transformez les images des avis
-      res.reviewDtoList.forEach((element: any) => { // Utilisez 'any' ici
-        element.processedImg = 'data:image/png;base64,' + element.returnedImg; // Correction ici
-        this.reviews.push(element); // Ajoutez l'élément transformé à la liste des avis
+      //image reviews
+      res.reviewDtoList.forEach((element: any) => { 
+        element.processedImg = 'data:image/png;base64,' + element.returnedImg; 
+        this.reviews.push(element);
       });
     })
   }
 
-  currentImageUrl(product: any): string {
-    return product.imageUrls && product.imageUrls.length > 0
-      ? product.imageUrls[0]
-      : 'default-image-url.jpg';
+  //image Product
+  // currentImageUrl(product: any): string {
+  //   return product.imageUrls && product.imageUrls.length > 0
+  //     ? product.imageUrls[0]
+  //     : 'default-image-url.jpg';
+  // }
+
+  setSelectedImage(index: number) {
+    this.selectedImageIndex = index;
   }
 
 }
