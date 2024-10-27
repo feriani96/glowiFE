@@ -92,6 +92,12 @@ export class CustomerService {
     });
   }
 
+  giveReview(reviewDto: any): Observable<any> {
+    return this.http.post(`${baseUrl}api/customer/review`, reviewDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
 
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();

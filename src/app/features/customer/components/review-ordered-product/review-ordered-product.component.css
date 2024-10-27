@@ -1,0 +1,109 @@
+/* Container Styling */
+.review-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* File Upload Styling */
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.file-upload-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: #0073e6;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.file-upload-label:hover {
+    background-color: #005bb5;
+}
+
+.file-upload-label mat-icon {
+    margin-left: 8px;
+    font-size: 20px;
+}
+
+/* Image Preview Styling (Smaller Size) */
+.image-preview {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+    max-width: 150px; /* Taille maximale de l'aperçu */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    max-height: 100px; /* Hauteur maximale de l'image */
+    object-fit: cover; /* Ajuste l'image pour bien remplir le conteneur */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Fields Styling */
+mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+mat-form-field.appearance-outline .mat-form-field-outline {
+    color: #0073e6;
+}
+
+mat-label {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Textarea Styling */
+textarea.mat-input-element {
+    resize: vertical;
+}
+
+/* Error Message Styling */
+mat-error {
+    font-size: 0.9em;
+    color: #d32f2f;
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #0073e6;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #005bb5;
+}
+
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
