@@ -49,13 +49,10 @@ export class ReviewOrderedProductComponent {
 
   submitForm(){
     const formData: FormData = new FormData(); 
-    // formData.append('img', this.selectedFile)
     if (this.selectedFile) {
       formData.append('img', this.selectedFile);
     }
-    //formData.append('productId', this.productId.toString());
     formData.append('productId', this.productId.toString());
-    //formData.append('userId', UserStorageService.getUserId.toString());
     formData.append('userId', UserStorageService.getUserId().toString()); 
     formData.append('rating', this.reviewForm.get('rating')?.value);
     formData.append('description', this.reviewForm.get('description')?.value);

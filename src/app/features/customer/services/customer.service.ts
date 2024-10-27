@@ -98,6 +98,12 @@ export class CustomerService {
     });
   }
 
+  getProductDetailById(productId: String):Observable<any> {
+    return this.http.get(`${baseUrl}api/customer/product/${productId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
 
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();

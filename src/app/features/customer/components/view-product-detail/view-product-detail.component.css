@@ -1,0 +1,155 @@
+/* Styles de base pour le corps */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8; /* Fond léger pour un aspect doux */
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 1200px; /* Largeur maximale pour le contenu */
+    margin: 0 auto; /* Centrer le conteneur */
+    padding: 20px;
+}
+
+/* Card de produit */
+.product-card {
+    background-color: #ffffff; /* Couleur blanche pour le produit */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    display: flex; /* Utilisation de flex pour aligner les éléments */
+    margin-bottom: 30px; /* Espacement entre les cartes */
+    padding: 15px; /* Espacement interne */
+}
+
+/* Image du produit */
+.product-image {
+    flex: 1; /* Laisse l'image prendre 1/2 de l'espace */
+    margin-right: 15px; /* Espace entre l'image et les détails */
+}
+
+.product-image img {
+    width: 100%; /* Laisse l'image prendre toute la largeur de son conteneur */
+    height: auto; /* Conserve le ratio d'aspect */
+    max-width: 400px; /* Limite la largeur maximale à 400px */
+}
+
+/* Détails du produit */
+.product-details {
+    flex: 2; /* Détails prennent 2/3 de l'espace */
+}
+
+.product-name {
+    font-size: 1.8em; /* Taille de police pour le nom du produit */
+    color: #333; /* Couleur de texte */
+    margin: 0 0 10px; /* Marges */
+}
+
+.product-description {
+    font-size: 1.2em; /* Taille de police pour la description */
+    color: #666; /* Couleur de texte plus claire */
+    margin: 0 0 10px;
+}
+
+.product-price {
+    font-size: 1.5em; /* Taille de police pour le prix */
+    color: #e67e22; /* Couleur du prix */
+    margin: 0 0 10px;
+}
+
+.product-category {
+    font-size: 1em; /* Taille de police pour la catégorie */
+    color: #999; /* Couleur grise pour la catégorie */
+}
+
+/* Titres de section */
+.section-heading {
+    font-size: 2em; /* Taille de police pour le titre */
+    margin: 30px 0 10px; /* Marges autour du titre */
+    color: #333; /* Couleur de texte pour le titre */
+}
+
+/* Liste des avis */
+.review-list,
+.faq-list {
+    margin-bottom: 30px; /* Espacement entre les listes */
+}
+
+/* Carte d'avis */
+.review-card,
+.faq-card {
+    background-color: #ffffff; /* Fond blanc */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    padding: 15px; /* Espacement interne */
+    margin-bottom: 15px; /* Espacement entre les cartes */
+    display: flex; /* Flex pour la mise en page */
+}
+
+/* Image d'avis */
+.review-image img {
+    width: 60px; /* Largeur de l'image d'avis */
+    height: 60px; /* Hauteur de l'image d'avis */
+    border-radius: 50%; /* Arrondir l'image */
+    margin-right: 10px; /* Espacement entre l'image et le texte */
+}
+
+/* Détails de l'avis */
+.review-details {
+    flex-grow: 1; /* Permet à cette section de prendre plus d'espace */
+}
+
+/* Éléments d'avis */
+.rating,
+.username {
+    font-size: 0.9em; /* Taille de police pour le rating et le nom d'utilisateur */
+    color: #777; /* Couleur grise */
+}
+
+/* Détails de FAQ */
+.faq-details {
+    margin-left: 10px; /* Espacement entre la question et la réponse */
+}
+
+.question {
+    font-weight: bold; /* Mettre la question en gras */
+}
+
+.answer {
+    margin-top: 5px; /* Espacement entre question et réponse */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .product-card {
+        flex-direction: column; /* Colonne pour les petits écrans */
+    }
+
+    .product-image {
+        margin-right: 0; /* Retirer l'espacement pour les petits écrans */
+        margin-bottom: 15px; /* Ajouter un espacement en bas */
+    }
+
+    .product-image img {
+        max-width: 100%; /* Ajuste l'image pour occuper toute la largeur sur mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-name {
+        font-size: 1.5em; /* Réduction de la taille de police pour petits écrans */
+    }
+
+    .product-description {
+        font-size: 1em; /* Réduction de la taille de police pour petits écrans */
+    }
+
+    .product-price {
+        font-size: 1.2em; /* Réduction de la taille de police pour petits écrans */
+    }
+
+    .section-heading {
+        font-size: 1.5em; /* Réduction de la taille de police pour petits écrans */
+    }
+}
