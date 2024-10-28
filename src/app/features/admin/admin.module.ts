@@ -15,6 +15,8 @@ import { CouponsComponent } from './components/coupons/coupons.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { PostProductFaqComponent } from './components/post-product-faq/post-product-faq.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { OrderByStatusComponent } from './components/analytics/order-by-status/order-by-status.component';
 
 
 
@@ -28,7 +30,9 @@ import { UpdateProductComponent } from './components/update-product/update-produ
     CouponsComponent,
     OrdersComponent,
     PostProductFaqComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    AnalyticsComponent,
+    OrderByStatusComponent
   ],
   imports: [
     CommonModule,

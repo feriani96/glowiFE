@@ -89,8 +89,15 @@ export class AdminService {
     });
   }
 
+  getAnalytics(): Observable<any> {
+    return this.http.get(`${baseUrl}api/admin/order/analytics`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
+
 }

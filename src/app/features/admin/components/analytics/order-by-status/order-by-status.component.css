@@ -1,0 +1,99 @@
+/* .order-status-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.order-status-card {
+    width: 100%;
+    background-color: #f7f8fa;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.order-status-card:hover {
+    transform: translateY(-5px);
+}
+
+.status-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dfe3e8;
+    color: #5a626f;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+}
+
+.mat-card-title {
+    font-size: 1.1rem;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.status-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0d6efd;
+} */
+
+
+
+/* Import de la police dans le CSS global */
+@import url('https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk+Display+Pro:wght@400&display=swap');
+
+/* Style global */
+body {
+    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+    background-color: #f1f3f5; /* Couleur de fond claire pour un meilleur contraste */
+    color: #333; /* Couleur de texte standard */
+}
+
+/* CSS pour order-by-status.component */
+.order-status-container {
+    display: flex;
+    gap: 2rem; /* Espacement accru entre les cartes */
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.order-status-card {
+    flex: 1; /* Permet aux cartes de s'étendre uniformément */
+    background-color: #ffffff; /* Couleur de fond blanche */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
+    border-radius: 12px; /* Coins arrondis plus marqués */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-status-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15); /* Ombre lors du survol */
+}
+
+.status-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dfe3e8;
+    color: #5a626f;
+    border-radius: 50%;
+    width: 50px; /* Légèrement plus grand */
+    height: 50px; /* Légèrement plus grand */
+    font-size: 1.5rem; /* Taille de police augmentée */
+}
+
+.mat-card-title {
+    font-size: 1.3rem; /* Augmentation de la taille de la police */
+    color: #2d3748; /* Couleur plus sombre pour le titre */
+    font-weight: 600;
+}
+
+.status-value {
+    font-size: 2rem; /* Taille de police augmentée pour les valeurs */
+    font-weight: bold;
+    color: #007bff; /* Couleur accentuée pour les valeurs */
+}
