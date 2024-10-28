@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="product-card" *ngFor="let product of products">
+        <div class="product_info">
+            <div class="product-image">
+                <img [src]="currentImageUrl(product)" alt="{{product.productName}}"
+                    *ngIf="currentImageUrl(product); else noImage">
+            </div>
+            <ng-template #noImage>
+                <img src="default-image-url.jpg" alt="Default Image">
+            </ng-template>
+
+            <div class="product-details">
+                <div class="product-row">
+                    <div class="product-name"> {{product.productName}}</div>
+                    <div class="product-name"> {{product.productDescription}}</div>
+                    <div class="price-container">
+                        <div class="product-price">{{product.price}}Dt</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,7 +19,9 @@
             <h2 class="product-name" *ngIf="product">{{ product.name }}</h2>
             <p class="product-description" *ngIf="product">{{ product.description }}</p>
             <p class="product-price" *ngIf="product">{{ product.price }} Dt</p>
-            <p class="product-category" *ngIf="product">{{ product.categoryName }}</p>
+            <p class="product-category" *ngIf="product">{{ product.categoryName }}
+                <mat-icon class="heart-icon" style="cursor: pointer; margin-top: 10px;" (click)="addToWishlist()">favorite_border</mat-icon>
+            </p>
         </div>
     </div>
 </div>

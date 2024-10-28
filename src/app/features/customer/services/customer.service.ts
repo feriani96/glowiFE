@@ -104,6 +104,20 @@ export class CustomerService {
     });
   }
 
+  addProductToWishlist(wishlistDto: any): Observable<any> {
+    return this.http.post(`${baseUrl}api/customer/wishlist`, wishlistDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getWishlistByUserId(): Observable<any> {
+    const userId = UserStorageService.getUserId()
+    return this.http.get(`${baseUrl}api/customer/wishlist/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+
 
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();

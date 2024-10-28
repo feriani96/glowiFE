@@ -1,0 +1,91 @@
+/* Style de base */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+
+.product-card {
+    width: 280px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image du produit */
+.product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+/* Informations produit */
+.product-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-row {
+    margin-bottom: 10px;
+}
+
+.product-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+    margin: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-description {
+    font-size: 0.9em;
+    color: #777;
+    margin: 5px 0;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price-container {
+    margin-top: 10px;
+}
+
+.product-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ff3e6c;
+}
+
+/* Effet au survol */
+.product-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(255, 62, 108, 0.1), rgba(63, 94, 251, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.product-card:hover::after {
+    opacity: 1;
+}
