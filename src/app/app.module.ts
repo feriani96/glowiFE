@@ -13,12 +13,14 @@ import { SignupComponent } from './features/signup/signup.component';
 import { AdminModule } from './features/admin/admin.module';
 import { SharedModule } from './shared/shared.module';
 import { CustomerModule } from './features/customer/customer.module';
+import { TrackOrderComponent } from './track-order/track-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
+    TrackOrderComponent,
   ],
   imports: [
     BrowserModule,

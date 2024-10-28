@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { UserStorageService } from '../storage/user-storage.service';
 import { environment } from 'src/environments/environment';
 
+const baseUrl = environment.BASIC_URL;
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,10 @@ export class AuthService {
         return false;
       })
     );
+  }
+
+  getOrderByTrackingId(trackingId: string): Observable<any>{
+    return this.http.get(`${baseUrl}order/${trackingId}`)
   }
 }
 

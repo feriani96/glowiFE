@@ -1,0 +1,88 @@
+/* Styles généraux */
+.searchForm {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 400px;
+}
+
+.order-details-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.order-details-container mat-card {
+    width: 100%;
+    max-width: 600px;
+    background-color: #f9f6f2;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3c3c3c;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Détails de la commande */
+.order-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    color: #6a1717;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.order-detail strong {
+    color: #3c3c3c;
+}
+
+.order-detail:last-child {
+    border-bottom: none;
+}
+
+/* Bouton de recherche */
+button[matSuffix] {
+    background-color: none;
+    border-radius: 0 4px 4px 0;
+    color: rgb(206, 206, 206);
+}
+
+button[matSuffix]:hover {
+    background-color: #b8a592;
+}
+
+mat-icon {
+    font-size: 1.2rem;
+}
+
+/* Adaptabilité */
+@media (max-width: 768px) {
+    .search-input, .order-details-container mat-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .order-detail {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.7rem;
+    }
+
+    .order-detail strong {
+        margin-top: 0.2rem;
+        font-size: 1rem;
+    }
+}
