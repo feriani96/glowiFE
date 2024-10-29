@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../services/customer.service';
 import { PlaceOrderComponent } from '../place-order/place-order.component';
+import { UserStorageService } from 'src/app/core/services/storage/user-storage.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,19 +18,23 @@ export class CartComponent {
   selectedImages: { [key: string]: number } = {};
 
   couponFrom!: FormGroup;
+  userId!: string;
+  productId!: string;
+
 
   constructor(
     private customerService: CustomerService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
     public dialog: MatDialog
-  ) { }
+  ) { this.userId = UserStorageService.getUserId();}
 
   ngOnInit(): void {
     this.couponFrom = this.fb.group({
       code: [null, [Validators.required]]
     });
     this.getCart();
+    this.userId = UserStorageService.getUserId();
   }
 
   applyCoupon() {
@@ -44,6 +49,7 @@ export class CartComponent {
       });
     });
   }
+  
 
   getCart() {
     this.cartItems =  []; 
@@ -62,6 +68,28 @@ export class CartComponent {
     });
   }
 
+  deleteProduct(productId: string) {
+    if (this.userId) {
+        this.customerService.deleteProduct(this.userId, productId).subscribe(
+            () => {
+                this.snackBar.open('Produit supprimé avec succès', 'Fermer', {
+                    duration: 3000
+                });
+                this.getCart(); 
+            },
+            (error) => {
+                this.snackBar.open('Erreur lors de la suppression du produit', 'Fermer', {
+                    duration: 3000
+                });
+            }
+        );
+    }
+}
+
+  
+  
+
+  
   currentImageUrl(item: any): string {
     return item.imageUrls && item.imageUrls.length > 0
       ? item.imageUrls[0]

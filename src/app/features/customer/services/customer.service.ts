@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { UserStorageService } from 'src/app/core/services/storage/user-storage.service';
 import { environment } from 'src/environments/environment';
 
@@ -34,6 +34,11 @@ export class CustomerService {
 
     return this.http.post(`${baseUrl}api/customer/cart`, cartDto, {
       headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  deleteProduct(userId: string, productId: string) {
+    return this.http.delete(`${baseUrl}api/customer/cart/${userId}/${productId}`, {
     });
   }
 
@@ -98,7 +103,7 @@ export class CustomerService {
     });
   }
 
-  getProductDetailById(productId: String):Observable<any> {
+  getProductDetailById(productId: String): Observable<any> {
     return this.http.get(`${baseUrl}api/customer/product/${productId}`, {
       headers: this.createAuthorizationHeader(),
     });
@@ -116,8 +121,6 @@ export class CustomerService {
       headers: this.createAuthorizationHeader(),
     });
   }
-
-
 
   private createAuthorizationHeader(): HttpHeaders {
     const token = UserStorageService.getToken();
