@@ -1,38 +1,41 @@
-<div class="order-status-container">
-    <mat-card class="order-status-card">
+<!-- order-by-status.component.html -->
+<div class="analytics-container">
+    <mat-card class="analytics-card">
         <mat-card-header>
-            <div mat-card-avatar class="status-avatar">
-                p
-            </div>
-            <mat-card-title>Placed</mat-card-title>
+            <div mat-card-avatar class="status-avatar">P</div>
+            <mat-card-title class="title">Placed</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-            <div class="status-value"> {{ data.placed}}</div>
-        </mat-card-content>
+        <div class="metrics-container">
+            <div class="metric-column">
+                <div class="metric-value">{{ data.placed }}</div>
+                <div class="metric-subtext">Orders Placed</div>
+            </div>
+        </div>
     </mat-card>
 
-    <mat-card class="order-status-card">
+    <mat-card class="analytics-card">
         <mat-card-header>
-            <div mat-card-avatar class="status-avatar">
-                S
-            </div>
-            <mat-card-title>Shipped</mat-card-title>
+            <div mat-card-avatar class="status-avatar">S</div>
+            <mat-card-title class="title">Shipped</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-            <div class="status-value"> {{ data.shipped}}</div>
-        </mat-card-content>
+        <div class="metrics-container">
+            <div class="metric-column">
+                <div class="metric-value">{{ data.shipped }}</div>
+                <div class="metric-subtext">Orders Shipped</div>
+            </div>
+        </div>
     </mat-card>
 
-    <mat-card class="order-status-card">
+    <mat-card class="analytics-card">
         <mat-card-header>
-            <div mat-card-avatar class="status-avatar">
-                D
-            </div>
-            <mat-card-title>Delivered</mat-card-title>
+            <div mat-card-avatar class="status-avatar">D</div>
+            <mat-card-title class="title">Delivered</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-            <div class="status-value"> {{ data.delivered}}</div>
-        </mat-card-content>
+        <div class="metrics-container">
+            <div class="metric-column">
+                <div class="metric-value">{{ data.delivered }}</div>
+                <div class="metric-subtext">Orders Delivered</div>
+            </div>
+        </div>
     </mat-card>
-
 </div>

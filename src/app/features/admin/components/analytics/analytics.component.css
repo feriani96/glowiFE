@@ -1,107 +1,111 @@
-/* .analytics-container {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: space-between;
+mat-card-header {
+    position: relative;
 }
 
-.analytics-card {
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    padding: 1rem;
-}
-
-.analytics-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.metric-avatar {
+.status-avatar {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e1e7f3;
-    color: #375a7f;
+    background-color: #e2e6ea;
+    color: #495057;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    position: absolute;
+    top: -40px;
+    left: 0;
 }
 
-.metric-value {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.metric-subtext {
-    font-size: 0.85rem;
-    color: #6c757d;
-}
-
-.previous-month {
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid #eaecef;
-} */
-
-/* Import de la police dans le CSS global */
-@import url('https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk+Display+Pro:wght@400&display=swap');
-
-/* Style global */
-body {
-    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
-    background-color: #f1f3f5; /* Couleur de fond claire pour un meilleur contraste */
-    color: #333; /* Couleur de texte standard */
+.title {
+    font-family: "Neue Haas Grotesk Display Pro Medium", sans-serif; 
+    font-size: 20px; 
+    color: #343a40; 
+    position: absolute;
+    top: -20px;
+    left: 40px;
+    font-weight: bold; 
 }
 
 .analytics-container {
     display: flex;
-    gap: 1.5rem;
-    justify-content: space-between;
+    justify-content: center; 
+    gap: 0; 
 }
 
 .analytics-card {
-    flex: 1; /* Permet aux cartes de s'étendre uniformément */
-    background-color: #ffffff;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 1.5rem; /* Plus d'espace à l'intérieur */
+    width: 500px; 
+    background-color: #f8f9fa; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    padding: 20px;
+    margin: 0 20px;
 }
 
 .analytics-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.metric-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e1e7f3;
-    color: #375a7f;
-    border-radius: 50%;
-    width: 50px; /* Légèrement plus grand */
-    height: 50px; /* Légèrement plus grand */
-    font-size: 1.5rem; /* Taille de police augmentée */
+.metrics-container {
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 16px; 
+    flex-direction: column; 
+}
+
+.metric-column {
+    flex: 1; 
+    text-align: left; 
+    margin: 8px 0; 
 }
 
 .metric-value {
-    font-size: 2.5rem; /* Taille de police augmentée */
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.metric-subtext {
-    font-size: 1rem; /* Taille de police augmentée */
-    color: #6c757d;
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    width: 100%; 
 }
 
 .previous-month {
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid #eaecef;
+    margin-top: 16px;
+}
+
+.metric-subtext {
+    font-size: 0.8rem;
+    color: #6c757d; 
+}
+
+/* Ajustements pour la responsivité */
+@media (max-width: 768px) {
+    .analytics-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .analytics-card {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .metric-column {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .metric-value {
+        font-size: 1.3rem;
+    }
 }
