@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 
 const baseUrl = environment.BASIC_URL;
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -39,8 +38,10 @@ export class CustomerService {
 
   deleteProduct(userId: string, productId: string) {
     return this.http.delete(`${baseUrl}api/customer/cart/${userId}/${productId}`, {
+      headers: this.createAuthorizationHeader(),
     });
   }
+
 
   getCartByUserId(): Observable<any> {
     const userId = UserStorageService.getUserId()

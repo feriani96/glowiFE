@@ -21,13 +21,12 @@ export class CartComponent {
   userId!: string;
   productId!: string;
 
-
   constructor(
     private customerService: CustomerService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
-    public dialog: MatDialog
-  ) { this.userId = UserStorageService.getUserId();}
+    public dialog: MatDialog,
+  ) { this.userId = UserStorageService.getUserId(); }
 
   ngOnInit(): void {
     this.couponFrom = this.fb.group({
@@ -38,6 +37,13 @@ export class CartComponent {
   }
 
   applyCoupon() {
+    if (this.cartItems.length === 0) {
+      this.snackBar.open("You must add products to the cart before applying a coupon.", 'close', {
+        duration: 5000
+      });
+      return;
+    }
+
     this.customerService.applyCoupon(this.couponFrom.get(['code'])!.value).subscribe(res => {
       this.snackBar.open("Coupon Applied Successfully", 'close', {
         duration: 5000
@@ -49,19 +55,16 @@ export class CartComponent {
       });
     });
   }
-  
 
   getCart() {
-    this.cartItems =  []; 
+    this.cartItems = [];
 
     this.customerService.getCartByUserId().subscribe(res => {
       this.order = res;
-
       if (res.cartItems && res.cartItems.length > 0) {
         this.cartItems = res.cartItems;
       } else {
         this.cartItems = [];
-        console.warn("No items in the cart.");
       }
     }, error => {
       console.error("Failed to fetch cart items:", error);
@@ -70,37 +73,32 @@ export class CartComponent {
 
   deleteProduct(productId: string) {
     if (this.userId) {
-        this.customerService.deleteProduct(this.userId, productId).subscribe(
-            () => {
-                this.snackBar.open('Produit supprimé avec succès', 'Fermer', {
-                    duration: 3000
-                });
-                this.getCart(); 
-            },
-            (error) => {
-                this.snackBar.open('Erreur lors de la suppression du produit', 'Fermer', {
-                    duration: 3000
-                });
-            }
-        );
+      this.customerService.deleteProduct(this.userId, productId).subscribe(
+        () => {
+          this.snackBar.open('Product deleted successfully', 'Close', {
+            duration: 3000
+          });
+          this.getCart();
+        },
+        (error) => {
+          this.snackBar.open('Error deleting product', 'Close', {
+            duration: 3000
+          });
+        }
+      );
     }
-}
+  }
 
-  
-  
-
-  
   currentImageUrl(item: any): string {
     return item.imageUrls && item.imageUrls.length > 0
       ? item.imageUrls[0]
       : 'default-image-url.jpg';
   }
 
-
   increaseQuantity(productId: any) {
     this.customerService.increaseProductQuantity(productId).subscribe(res => {
-      this.snackBar.open('Product quantity increased.', 'clode', {duration:5000});
-      
+      this.snackBar.open('Product quantity increased.', 'clode', { duration: 5000 });
+
       this.getCart();
     })
 
@@ -108,16 +106,21 @@ export class CartComponent {
 
   decreaseQuantity(productId: any) {
     this.customerService.decreaseProductQuantity(productId).subscribe(res => {
-      this.snackBar.open('Product quantity decreased.', 'clode', {duration:5000});
-      
+      this.snackBar.open('Product quantity decreased.', 'clode', { duration: 5000 });
+
       this.getCart();
     })
 
   }
 
-  placeOrder(){
-    this.dialog.open(PlaceOrderComponent);
+  placeOrder() {
+    const dialogRef = this.dialog.open(PlaceOrderComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.getCart();
+      if (result === 'success') {
+        this.getCart();
+      }
+    });
   }
-
 
 }

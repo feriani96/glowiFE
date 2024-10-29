@@ -20,7 +20,7 @@ export class PlaceOrderComponent {
     private customerService: CustomerService,
     private router: Router,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.orderForm = this.fb.group({
@@ -29,19 +29,20 @@ export class PlaceOrderComponent {
     })
   }
 
-  placeOrder(){
-    this.customerService.placeOrder(this.orderForm.value).subscribe(res=>{
-      if (res.id != null){
-        this.snackBar.open("Order Place Successfully", "close", {duration: 5000})
+  placeOrder() {
+    this.customerService.placeOrder(this.orderForm.value).subscribe(res => {
+      if (res.id != null) {
+        this.snackBar.open("Order Placed Successfully", "close", { duration: 5000 });
+        this.dialog.closeAll();
         this.router.navigateByUrl("customer/my-orders");
-        this.closeFrom();
-      }else{
-        this.snackBar.open("Something Went Wrong", "close", {duration: 5000})
+      } else {
+        this.snackBar.open("Something Went Wrong", "close", { duration: 5000 });
       }
-    })
+    });
   }
 
-  closeFrom(){
+
+  closeFrom() {
     this.dialog.closeAll();
   }
 }
