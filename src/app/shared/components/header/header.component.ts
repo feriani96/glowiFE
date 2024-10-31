@@ -10,13 +10,10 @@ import { UserStorageService } from 'src/app/core/services/storage/user-storage.s
 export class HeaderComponent {
   @Input() isCustomerLoggedIn: boolean = false;
   @Input() isAdminLoggedIn: boolean = false;
-  
-
-  
+    
   searchQuery: string = '';
   isNavbarVisible: boolean = window.innerWidth > 991; 
   isMobile: boolean = window.innerWidth < 768; 
-
 
   constructor(private router : Router) {
     this.checkWindowSize(); 
@@ -28,7 +25,6 @@ export class HeaderComponent {
     this.router.navigateByUrl('login');
   }
 
-
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.checkWindowSize();
@@ -38,7 +34,6 @@ export class HeaderComponent {
     this.isNavbarVisible = window.innerWidth > 991; 
     this.isMobile = window.innerWidth < 900; 
   }
-
   
   onSearch() {
     if (this.searchQuery.trim()) {

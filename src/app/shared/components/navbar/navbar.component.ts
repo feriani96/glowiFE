@@ -31,9 +31,5 @@ export class NavbarComponent {
     this.isMobile = window.innerWidth < 900; 
   }
 
-  logout() {
-    UserStorageService.signOut();
-    this.router.navigateByUrl('login');
-  }
 
 }

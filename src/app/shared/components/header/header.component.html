@@ -16,8 +16,11 @@
             </form>
 
             <div class="d-flex align-items-center justify-content-end">
-                <button mat-icon-button aria-label="Profile" [matMenuTriggerFor]="profileMenu" class="icon-button">
+                <button mat-icon-button aria-label="Profile" *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" [matMenuTriggerFor]="profileMenu" class="icon-button">
                     <mat-icon>account_circle</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Logout" *ngIf="isCustomerLoggedIn || isAdminLoggedIn" (click)="logout()" class="icon-button">
+                    <mat-icon>logout</mat-icon>
                 </button>
                 <mat-menu #profileMenu="matMenu" class="simple-menu">
                     <button mat-menu-item routerLink="/signup" routerLinkActive="active">Register</button>

@@ -1,34 +1,30 @@
 
-/* Centrer la carte de signup dans la fenêtre */
 .signup-form {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90%; /* Prend toute la hauteur de la fenêtre */
+    height: 90%; 
 }
 
 mat-card {
     width: 100%;
-    max-width: 400px; /* Largeur maximale du formulaire */
-    margin: 16px; /* Espacement autour de la carte */
+    max-width: 400px; 
+    margin: 150px; 
 }
 
-/* Style pour tous les champs de formulaire */
 mat-form-field {
-    width: 100%; /* Chaque champ de formulaire prendra 100% de la largeur de mat-card */
-    margin-bottom: 16px; /* Espacement entre les champs */
+    width: 100%; 
+    margin-bottom: 16px; 
 }
 
-/* Styles du bouton */
 button {
     margin: 2%;
     padding: 5px;
     float: right;
 }
 
-/* Responsivité pour les petits écrans */
 @media (max-width: 600px) {
     mat-card {
-        width: 90%; /* Largeur pour les petits écrans */
+        width: 90%; 
     }
 }

@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './features/login/login.component';
 import { SignupComponent } from './features/signup/signup.component';
 import { TrackOrderComponent } from './track-order/track-order.component';
+import { MainContentComponent } from './shared/components/main-content/main-content.component';
 ;
 
 const routes: Routes = [
+  { path: 'home', component: MainContentComponent },
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'order', component: TrackOrderComponent},
