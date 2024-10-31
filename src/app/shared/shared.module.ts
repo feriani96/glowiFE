@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
 import { AngularMaterialModule } from '../AngularMaterialModule';
 import { HeaderComponent } from './components/header/header.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MainContentComponent } from './components/main-content/main-content.component';
 
 
 
@@ -10,6 +12,8 @@ import { HeaderComponent } from './components/header/header.component';
   declarations: [
     ImageUploaderComponent,
     HeaderComponent,
+    NavbarComponent,
+    MainContentComponent,
   ],
   
   imports: [
@@ -20,6 +24,8 @@ import { HeaderComponent } from './components/header/header.component';
   exports: [
     ImageUploaderComponent,
     HeaderComponent,
+    NavbarComponent,
+    MainContentComponent,
   ]
 })
 export class SharedModule { }
