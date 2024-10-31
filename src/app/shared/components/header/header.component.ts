@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserStorageService } from 'src/app/core/services/storage/user-storage.service';
 
@@ -8,26 +8,20 @@ import { UserStorageService } from 'src/app/core/services/storage/user-storage.s
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  @Input() isCustomerLoggedIn: boolean = false;
+  @Input() isAdminLoggedIn: boolean = false;
+  
+
   
   searchQuery: string = '';
   isNavbarVisible: boolean = window.innerWidth > 991; 
   isMobile: boolean = window.innerWidth < 768; 
-
-  isCustomerLoggedIn: boolean = UserStorageService.isCustomerLoggedIn();
-  isAdminLoggedIn: boolean = UserStorageService.isAdminLoggedIn();
 
 
   constructor(private router : Router) {
     this.checkWindowSize(); 
   }
 
-
-  ngOnInit(): void{
-    this.router.events.subscribe(event => {
-      this.isCustomerLoggedIn = UserStorageService.isCustomerLoggedIn();
-      this.isAdminLoggedIn = UserStorageService.isAdminLoggedIn();
-    })
-  }
 
   logout() {
     UserStorageService.signOut();
