@@ -8,6 +8,7 @@ import { MainContentComponent } from './shared/components/main-content/main-cont
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  
   { path: 'home', component: MainContentComponent },
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},

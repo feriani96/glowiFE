@@ -42,6 +42,9 @@
   [isAdminLoggedIn]="isAdminLoggedIn">
 </app-header>
 
-<app-navbar></app-navbar>
+<app-navbar 
+  [isCustomerLoggedIn]="isCustomerLoggedIn" 
+  [isAdminLoggedIn]="isAdminLoggedIn">
+</app-navbar>
 
 <router-outlet></router-outlet>

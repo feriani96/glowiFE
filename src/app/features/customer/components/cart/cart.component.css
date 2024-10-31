@@ -1,5 +1,6 @@
 .cart-wrapper {
     display: flex;
+    margin-top: 120px;
 }
 
 .cart-container {
