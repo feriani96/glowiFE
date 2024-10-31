@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Neue+Hass+Grotesk+Display+Pro:400&display=swap');
+
+#home {
+    top: 80px;
+    width: 100%;
+    position: relative;
+}
+
+.carousel {
+    position: relative;
+    height: 100%;
+}
+
+.carousel-image {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-width-image {
+    width: 100%; 
+    height: 450px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.title-1 {
+    font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif;
+    color: #333;
+    text-align: center; 
+    top: 55%;
+    right: 5px; 
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+.title-2 {
+    font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif;
+    color: #333; 
+    text-align: center; 
+    position: absolute;
+    top: 55%; 
+    left: 100px; 
+    transform: translateY(-50%);
+}
+
+.banner-content {
+    font-family: 'Neue Hass Grotesk Display Pro Medium', sans-serif;
+    position: absolute;
+    top: 55%;
+    right: 5px; 
+    transform: translateY(-50%); 
+    color: #333;
+    width: 500px; 
+    text-align: center;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* section2 */
+#category {
+    width: 100%;
+    position: relative;
+    background-color: #F1E9E6;
+}
+
+.category-title{
+    font-family:lvy Mode Regular;
+    font-size: 48px;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none solid rgb(18, 18, 18);
+    align-items:center;
+    margin: center;
+}
+
+.card-detail{
+    font-family:lvy Mode Regular;
+    font-size: 10px;
+    text-align: center; 
+    display: flex; 
+    justify-content: center; 
+    flex-direction: column;
+}

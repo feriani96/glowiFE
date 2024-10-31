@@ -1,16 +1,33 @@
-.mat-toolbar {
-    font-family: 'Neue Haas Grotesk Display Pro Medium, sans-serif';
-    background-color: #F5F5F5;
-    color: rgb(0, 0, 0);
-    font-size: 13px;
-    text-decoration: none solid rgb(18, 18, 18);
-    text-transform: uppercase;
-}
-
-.mat-button {
-    color: white;
-}
-
-.spacer {
-    flex: 1 1 auto;
-}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #333; 
+    color: white; 
+    z-index: 1000; 
+  }
+  
+  app-navbar {
+    position: fixed;
+    top: 60px; 
+    left: 0;
+    right: 0;
+    height: 50px; 
+    background-color: #444;
+    color: white; 
+    z-index: 999; 
+  }
+  
+  .content {
+    margin-top: 90px; 
+    padding: 20px; 
+  }
+  

@@ -1,4 +1,4 @@
-<header id="navbar" class="site-header header-scrolled position-fixed text-black ">
+<header id="navbar" class="site-header header-scrolled position-fixed text-black"  >
     <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
             <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
@@ -15,26 +15,80 @@
                 <div class="offcanvas-body">
                     <ul id="navbar"
                         class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link me-4 active" href="#billboard">Home</a></li>
-                        <li class="nav-item"><a class="nav-link me-4" href="#company-services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link me-4" href="#mobile-products">Products</a></li>
-                        <li class="nav-item"><a class="nav-link me-4" href="#smart-watches">Watches</a></li>
-                        <li class="nav-item"><a class="nav-link me-4" href="#yearly-sale">Sale</a></li>
-                        <li class="nav-item"><a class="nav-link me-4" href="#latest-blog">Blog</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#"
-                                role="button" aria-expanded="false">Pages</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="about.html" class="dropdown-item">About</a></li>
-                                <li><a href="blog.html" class="dropdown-item">Blog</a></li>
-                                <li><a href="shop.html" class="dropdown-item">Shop</a></li>
-                                <li><a href="cart.html" class="dropdown-item">Cart</a></li>
-                                <li><a href="checkout.html" class="dropdown-item">Checkout</a></li>
-                                <li><a href="single-post.html" class="dropdown-item">Single Post</a></li>
-                                <li><a href="single-product.html" class="dropdown-item">Single Product</a></li>
-                                <li><a href="contact.html" class="dropdown-item">Contact</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a class="nav-link me-4" >Home</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" >Services</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" >Products</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" >Watches</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" >Sale</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" >Blog</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<header id="navbar" class="site-header header-scrolled position-fixed text-black " >
+    <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+        <div class="container-fluid">
+            <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <mat-icon class="navbar-icon">menu</mat-icon>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                <div class="offcanvas-header px-4 pb-0">
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul id="navbar"
+                        class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+                        <li class="nav-item"><a class="nav-link me-4" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/admin/analytics" routerLinkActive="active">Analytics</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/admin/category" routerLinkActive="active">Category</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/admin/product" routerLinkActive="active">Product</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/admin/orders" routerLinkActive="active">Orders</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/admin/post-coupon" routerLinkActive="active">Post Coupon</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/admin/coupons" routerLinkActive="active">coupon</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLinkActive="active" (click)="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<header id="navbar" class="site-header header-scrolled position-fixed text-black ">
+    <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
+        <div class="container-fluid">
+            <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <mat-icon class="navbar-icon">menu</mat-icon>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+                <div class="offcanvas-header px-4 pb-0">
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body" >
+                    <ul id="navbar"
+                        class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
+                        <li class="nav-item"><a class="nav-link me-4" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/customer/cart" routerLinkActive="active">Cart</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/customer/my_orders" routerLinkActive="active">orders</a></li>
+                        <li class="nav-item"><a class="nav-link me-4" routerLink="/customer/wishlist" routerLinkActive="active">Wishlist</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link me-4" routerLink="/customer/profile" routerLinkActive="active">Profile</a></li> -->
+                        <li class="nav-item"><a class="nav-link me-4" routerLinkActive="active" (click)="logout()">Logout</a></li>
+
                     </ul>
                 </div>
             </div>

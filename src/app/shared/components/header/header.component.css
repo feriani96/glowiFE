@@ -72,6 +72,18 @@ form.d-flex {
     display: none; 
 }
 
+/*  */
+.mat-menu-item {
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: background-color 0.2s;
+}
+
+.mat-menu-item:hover {
+    background-color: #f0f0f0; 
+    box-shadow: none;
+}
+
 @media (min-width: 992px) {
     #header-nav {
         padding: 0;

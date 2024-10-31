@@ -16,9 +16,13 @@
             </form>
 
             <div class="d-flex align-items-center justify-content-end">
-                <button mat-icon-button aria-label="Profile" routerLink="/profile" class="icon-button">
+                <button mat-icon-button aria-label="Profile" [matMenuTriggerFor]="profileMenu" class="icon-button">
                     <mat-icon>account_circle</mat-icon>
                 </button>
+                <mat-menu #profileMenu="matMenu" class="simple-menu">
+                    <button mat-menu-item routerLink="/signup" routerLinkActive="active">Register</button>
+                    <button mat-menu-item routerLink="/login" routerLinkActive="active">Login</button>
+                </mat-menu>
                 <button mat-icon-button aria-label="Favorites" routerLink="/favorites" class="icon-button">
                     <mat-icon>favorite</mat-icon>
                 </button>
@@ -29,5 +33,7 @@
         </div>
     </nav>
 </header>
+
+
 
 <app-navbar></app-navbar>

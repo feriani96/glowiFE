@@ -5,8 +5,15 @@ import { AngularMaterialModule } from '../AngularMaterialModule';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { LoginComponent } from '../features/login/login.component';
+import { SignupComponent } from '../features/signup/signup.component';
+import { TrackOrderComponent } from '../track-order/track-order.component';
+import { CustomerModule } from '../features/customer/customer.module';
+import { AdminModule } from '../features/admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -16,20 +23,33 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HeaderComponent,
     FooterComponent,
     MainContentComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    SignupComponent,
+    TrackOrderComponent,
+    
   ],
   
   imports: [
     CommonModule,
     AngularMaterialModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    AdminModule,
+    CustomerModule,
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
 
   exports: [
     ImageUploaderComponent,
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    MainContentComponent,
+    LoginComponent,
+    SignupComponent,
+    TrackOrderComponent,
   ]
 })
 export class SharedModule { }

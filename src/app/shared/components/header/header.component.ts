@@ -1,4 +1,6 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserStorageService } from 'src/app/core/services/storage/user-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +13,27 @@ export class HeaderComponent {
   isNavbarVisible: boolean = window.innerWidth > 991; 
   isMobile: boolean = window.innerWidth < 768; 
 
-  constructor() {
+  isCustomerLoggedIn: boolean = UserStorageService.isCustomerLoggedIn();
+  isAdminLoggedIn: boolean = UserStorageService.isAdminLoggedIn();
+
+
+  constructor(private router : Router) {
     this.checkWindowSize(); 
   }
+
+
+  ngOnInit(): void{
+    this.router.events.subscribe(event => {
+      this.isCustomerLoggedIn = UserStorageService.isCustomerLoggedIn();
+      this.isAdminLoggedIn = UserStorageService.isAdminLoggedIn();
+    })
+  }
+
+  logout() {
+    UserStorageService.signOut();
+    this.router.navigateByUrl('login');
+  }
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -25,10 +45,7 @@ export class HeaderComponent {
     this.isMobile = window.innerWidth < 900; 
   }
 
-  toggleNavbar() {
-    this.isNavbarVisible = !this.isNavbarVisible;
-  }
-
+  
   onSearch() {
     if (this.searchQuery.trim()) {
       console.log('Rechercher:', this.searchQuery);
