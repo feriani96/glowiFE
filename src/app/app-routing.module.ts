@@ -7,12 +7,15 @@ import { MainContentComponent } from './shared/components/main-content/main-cont
 ;
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: MainContentComponent },
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'order', component: TrackOrderComponent},
   { path: 'customer', loadChildren: () => import('./features/customer/customer.module').then(m => m.CustomerModule) }, 
-  { path: 'admin', loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule) }];
+  { path: 'admin', loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule) }
+];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

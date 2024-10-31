@@ -14,17 +14,15 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" href="index.html">Home</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" href="index.html">MOMS</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" href="index.html">SHOES & ACC</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" href="index.html">JUNIORS</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" href="index.html">FORMAL & EVENING</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/admin/dashboard" routerLinkActive="active">Trak Order</a></li>
+                        <!-- Pages statiques pour les utilisateurs non connectés -->
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/home">Home</a></li>
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/moms">MOMS</a></li>
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/shoes-and-acc">SHOES & ACC</a></li>
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/juniors">JUNIORS</a></li>
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/formal-evening">FORMAL & EVENING</a></li>
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/order">Track Order</a></li>
 
-
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" href="index.html">Home</a>
-                        </li>
+                        <!-- Pages pour les admins -->
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
                             <a class="nav-link me-4" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
                         </li>
@@ -44,21 +42,13 @@
                             <a class="nav-link me-4" routerLink="/admin/post-coupon" routerLinkActive="active">Post Coupon</a>
                         </li>
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/admin/coupons" routerLinkActive="active">coupon</a>
+                            <a class="nav-link me-4" routerLink="/admin/coupons" routerLinkActive="active">Coupons</a>
                         </li>
 
-
-
-
-                        <!-- customer -->
-                        <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn">
-                            <a class="nav-link me-4" href="index.html">Home</a>
-                        </li>
-
+                        <!-- Pages pour les clients -->
                         <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn">
                             <a class="nav-link me-4" routerLink="/customer/dashboard" routerLinkActive="active">Customer Dashboard</a>
                         </li>
-
                         <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn">
                             <a class="nav-link me-4" routerLink="/customer/cart" routerLinkActive="active">Cart</a>
                         </li>

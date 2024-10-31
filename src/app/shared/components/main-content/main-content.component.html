@@ -1,1 +1,114 @@
 <p>main-content works!</p>
+<section id="home">
+    <div class="carousel">
+        <div class="carousel-image" *ngIf="slides.length > 0">
+            <img [src]="slides[currentIndex].src" alt="banner" class="full-width-image">
+            <div class="banner-content" [ngClass]="currentIndex === 1 ? 'title-2' : 'title-1'">
+                <h1 style="font-size: 20px;">
+                    {{ slides[currentIndex].title.split(' ').slice(0, 5).join(' ') }}<br>
+                    {{ slides[currentIndex].title.split(' ').slice(5).join(' ') }}
+                </h1>
+                <a [href]="slides[currentIndex].link" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">
+                    Shop Product
+                </a>
+            </div>
+        </div>
+
+        <button class="carousel-control prev" (click)="prevSlide()">&#10094;</button>
+        <button class="carousel-control next" (click)="nextSlide()">&#10095;</button>
+    </div>
+</section>
+
+<section id="category" class="product-store position-relative padding-large">
+    <div class="container">
+        <div class="row">
+            <div class="display-header ">
+                <h2 class="category-title">YOUR STORY STARTS HERE</h2>
+                <p style="text-align:center;">Explore our collection of dresses and accessories, expertly designed for
+                    your special occasion</p>
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-md-3 mb-4">
+                    <div class="product-card position-relative">
+                        <div class="image-holder">
+                            <img src="assets/images/cat1.jpg" alt="product-item" class="img-fluid product-image">
+                        </div>
+                        <div class="cart-concern position-absolute">
+                            <div class="cart-button d-flex">
+                                <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline">
+                                        <use xlink:href="#cart-outline"></use>
+                                    </svg></a>
+                            </div>
+                        </div>
+                        <div class="card-detail pt-3 ">
+                            <h3 class="card-title text-uppercase center">
+                                <a href="#">BRIDESMAID</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 mb-4">
+                    <div class="product-card position-relative">
+                        <div class="image-holder">
+                            <img src="assets/images/cat2.jpg" alt="product-item" class="img-fluid product-image">
+                        </div>
+                        <div class="cart-concern position-absolute">
+                            <div class="cart-button d-flex">
+                                <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline">
+                                        <use xlink:href="#cart-outline"></use>
+                                    </svg></a>
+                            </div>
+                        </div>
+                        <div class="card-detail pt-3 ">
+                            <h3 class="card-title text-uppercase center">
+                                <a href="#">BRIDAL</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 mb-4">
+                    <div class="product-card position-relative">
+                        <div class="image-holder">
+                            <img src="assets/images/cat3.jpg" alt="product-item" class="img-fluid product-image">
+                        </div>
+                        <div class="cart-concern position-absolute">
+                            <div class="cart-button d-flex">
+                                <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline">
+                                        <use xlink:href="#cart-outline"></use>
+                                    </svg></a>
+                            </div>
+                        </div>
+                        <div class="card-detail pt-3 ">
+                            <h3 class="card-title text-uppercase center">
+                                <a href="#">FORMAL & EVENING</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3 mb-4">
+                    <div class="product-card position-relative">
+                        <div class="image-holder">
+                            <img src="assets/images/cat4.jpg" alt="product-item" class="img-fluid product-image">
+                        </div>
+                        <div class="cart-concern position-absolute">
+                            <div class="cart-button d-flex">
+                                <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline">
+                                        <use xlink:href="#cart-outline"></use>
+                                    </svg></a>
+                            </div>
+                        </div>
+                        <div class="card-detail pt-3 ">
+                            <h3 class="card-title text-uppercase center">
+                                <a href="#">MOMS</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
