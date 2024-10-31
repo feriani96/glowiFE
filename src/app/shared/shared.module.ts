@@ -8,6 +8,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -25,7 +26,8 @@ import { AppRoutingModule } from '../app-routing.module';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
 
   ],
 

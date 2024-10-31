@@ -32,7 +32,7 @@ import { TrackOrderComponent } from './track-order/track-order.component';
     HttpClientModule,
     AdminModule,
     CustomerModule,
-    SharedModule
+    SharedModule,
 
   ],
   providers: [],
