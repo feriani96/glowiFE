@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../core/services/auth/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from '../core/services/auth/auth.service';
   templateUrl: './category-products.component.html',
   styleUrls: ['./category-products.component.css']
 })
-export class CategoryProductsComponent {
+export class CategoryProductsComponent implements OnInit {
 
   categoryId: string | null = null;
   categoryName: string = '';
@@ -23,12 +23,14 @@ export class CategoryProductsComponent {
   ) {}
 
   ngOnInit(): void {
-    this.categoryId = this.route.snapshot.paramMap.get('id');
-    console.log('Category ID:', this.categoryId); // Ajoutez cette ligne
-    if (this.categoryId) {
-      this.fetchCategoryDetails();
-      this.fetchProductsByCategory(this.categoryId);
-    }
+    this.route.paramMap.subscribe(params => {
+      this.categoryId = params.get('id');
+      console.log('Category ID:', this.categoryId);
+      if (this.categoryId) {
+        this.fetchCategoryDetails();
+        this.fetchProductsByCategory(this.categoryId);
+      }
+    });
   }
 
 

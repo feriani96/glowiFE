@@ -63,7 +63,7 @@
 
                         <ng-container *ngIf="isCustomerLoggedIn">
                             <li *ngFor="let category of categories" class="nav-item">
-                                <a class="nav-link me-4" [routerLink]="['/category', category.id]">{{ category.name }}</a>
+                                <a class="nav-link me-4" [routerLink]="['/category', category.id]" (click)="resetSelection()">{{ category.name }}</a>
                             </li>
                         </ng-container>
 

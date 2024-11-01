@@ -9,7 +9,7 @@ import { CategoryProductsComponent } from './category-products/category-products
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: MainContentComponent },
+  { path: 'home', component: MainContentComponent },
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'order', component: TrackOrderComponent},

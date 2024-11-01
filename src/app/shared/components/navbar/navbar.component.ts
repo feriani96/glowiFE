@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit{
   @Input() isAdminLoggedIn: boolean = false;
 
   categories: any[] = [];
+  selectedCategory: string | null = null;
+
   
 
   isMobile = false;
@@ -48,4 +50,7 @@ export class NavbarComponent implements OnInit{
     });
   }
 
+  resetSelection() {
+    this.selectedCategory = null; // Réinitialiser la sélection
+}
 }
