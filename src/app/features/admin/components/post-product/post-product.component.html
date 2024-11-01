@@ -4,7 +4,7 @@
     </div>
 
     <div class="form-section">
-        <h2>Add Product</h2>
+        <h2>CREATE PRODUCT</h2>
         <form [formGroup]="productForm" (ngSubmit)="addProduct()">
 
             <mat-form-field appearance="fill">
@@ -42,22 +42,22 @@
                 <mat-error *ngIf="productForm.get('quantity')?.hasError('required')">This input is required!</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
                 <mat-label>Available Sizes</mat-label>
                 <mat-select formControlName="availableSizes" placeholder="Available Sizes" multiple>
                     <mat-option *ngFor="let size of sizes" [value]="size">{{ size }}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="productForm.get('availableSizes')?.hasError('required')">This input is
                     required!</mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
 
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
                 <mat-label>Colors</mat-label>
                 <mat-select formControlName="colors" placeholder="Colors" multiple>
                     <mat-option *ngFor="let color of colors" [value]="color">{{ color }}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="productForm.get('colors')?.hasError('required')">This input is required!</mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
 
             <button mat-raised-button color="primary" type="submit">Add Product</button>
         </form>

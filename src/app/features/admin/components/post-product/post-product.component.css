@@ -1,6 +1,7 @@
 .post-product-container {
   display: flex;
   justify-content: space-between;
+  margin-top: 140px;
 }
 
 .image-uploader-section {
@@ -12,6 +13,16 @@
 
 .form-section {
   width: 70%;
+}
+
+h2 {
+  font-family: 'Neue Haas Grotesk Display Pro Semibold', sans-serif;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #121212;
+  letter-spacing: 0.36px;
+  font-weight: 600;
 }
 
 

@@ -2,13 +2,13 @@
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    margin-top: 10px;
+    margin-top: 150px;
     
     h2 {
         font-family: 'Neue Haas Grotesk Display Pro Semibold', sans-serif;
         font-size: 18px;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         color: #121212;
         letter-spacing: 0.36px;
         font-weight: 600;
@@ -76,11 +76,11 @@
 
 @media (max-width: 600px) {
     .container {
-        padding: 10px;
+        padding: 20px;
 
         form {
             mat-form-field {
-                margin-bottom: 10px;
+                margin-bottom: 20px;
             }
         }
     }
