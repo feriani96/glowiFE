@@ -14,6 +14,7 @@ import { AdminModule } from './features/admin/admin.module';
 import { SharedModule } from './shared/shared.module';
 import { CustomerModule } from './features/customer/customer.module';
 import { TrackOrderComponent } from './track-order/track-order.component';
+import { CategoryProductsComponent } from './category-products/category-products.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TrackOrderComponent } from './track-order/track-order.component';
     LoginComponent,
     SignupComponent,
     TrackOrderComponent,
+    CategoryProductsComponent,
   ],
   imports: [
     BrowserModule,

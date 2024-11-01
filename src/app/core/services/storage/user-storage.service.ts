@@ -67,9 +67,15 @@ export class UserStorageService {
     window.localStorage.removeItem(USER);
   }
 
+  public static isAuthenticated(): boolean {
+    return this.getToken() !== null; // Retourne true si un token est présent
+  }
+
+  public getToken(): string | null {
+    return localStorage.getItem(TOKEN);
+  }
+  
+
+
 
 }
-
-
-
-

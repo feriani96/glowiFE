@@ -1,20 +1,21 @@
-/* Styles généraux */
 .searchForm {
     display: flex;
     justify-content: center;
     padding: 1rem;
     margin-bottom: 2rem;
+    margin-top: 100px;
+
 }
 
 .search-input {
     width: 100%;
     max-width: 400px;
+
 }
 
 .order-details-container {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
 }
 
 .order-details-container mat-card {

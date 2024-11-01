@@ -14,13 +14,19 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/home">Home</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" >MOMS</a></li>
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item" ><a class="nav-link me-4" routerLink="/home">Home</a></li>
+                        
+                        <ng-container *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+                            <li *ngFor="let category of categories" class="nav-item">
+                                <a class="nav-link me-4" [routerLink]="['/category', category.id]">{{ category.name }}</a>
+                            </li>
+                        </ng-container>
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"  routerLink="/customer/dashboard"><a class="nav-link me-4" >PRODUCT</a></li>
                         <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" >SHOES & ACC</a></li>
                         <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" >JUNIORS</a></li>
                         <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" >FORMAL & EVENING</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/admin/dashboard" routerLinkActive="active">Trak Order</a></li>
-
+                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/order" routerLinkActive="active">Trak Order</a></li>
+                        
 
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
                             <a class="nav-link me-4" routerLink="/home">Home</a>
@@ -55,8 +61,14 @@
                             <a class="nav-link me-4" routerLink="/home">Home</a>
                         </li>
 
+                        <ng-container *ngIf="isCustomerLoggedIn">
+                            <li *ngFor="let category of categories" class="nav-item">
+                                <a class="nav-link me-4" [routerLink]="['/category', category.id]">{{ category.name }}</a>
+                            </li>
+                        </ng-container>
+
                         <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn">
-                            <a class="nav-link me-4" routerLink="/customer/dashboard" routerLinkActive="active">Customer Dashboard</a>
+                            <a class="nav-link me-4" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
                         </li>
 
                         <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn">

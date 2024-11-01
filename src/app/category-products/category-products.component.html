@@ -1,0 +1,50 @@
+<div class="category-container">
+    <h2>{{ categoryName }}</h2>
+    
+    <div *ngIf="products.length > 0; else noProducts" class="product-list">
+      <mat-card class="product-card" *ngFor="let product of products">
+        <div class="product-image" (mouseenter)="startImageRotation(product)" (mouseleave)="stopImageRotation()">
+          <img mat-card-image [src]="currentImageUrl(product)" alt="Image produit">
+        </div>
+  
+        <div class="product-details">
+          <!-- Liste des couleurs -->
+          <div *ngIf="product.colors && product.colors.length > 0" class="color-list">
+            <span *ngFor="let color of product.colors" [ngStyle]="{'background-color': color}" class="color-circle"></span>
+          </div>
+  
+          <!-- Nom -->
+          <h3 class="product-name">{{ product.name }}</h3>
+  
+          <!-- Description -->
+          <p class="product-description">{{ product.description }}</p>
+  
+          <!-- Prix et quantité -->
+          <div class="product-info">
+            <div class="info-row price-row">
+              <span class="price-label">Price:</span>
+              <span class="price-value">{{ product.price }} DT</span>
+            </div>
+  
+            <div class="info-row quantity-row">
+              <span class="quantity-label">Quantity:</span>
+              <span class="quantity-value">{{ product.quantity }}</span>
+            </div>
+  
+            <!-- Catégorie -->
+            <div class="info-row category-row">
+              <span class="category-label">Category:</span>
+              <span class="category-value">{{ product.categoryName }}</span>
+            </div>
+          </div>
+  
+
+        </div>
+      </mat-card>
+    </div>
+    
+    <ng-template #noProducts>
+      <p>No products available in this category.</p>
+    </ng-template>
+  </div>
+  

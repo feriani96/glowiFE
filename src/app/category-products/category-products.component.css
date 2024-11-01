@@ -1,0 +1,138 @@
+.category-container {
+    padding: 20px; /* Ajoutez de la marge autour de votre conteneur */
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    padding: 30px;
+}
+
+.product-card {
+    width: calc(25% - 10px);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    font-family: "Neue Haas Grotesk Display Pro Medium";
+}
+
+.product-image {
+    height: 400px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-details {
+    padding: 10px;
+}
+
+.product-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 10px;
+    height: 60px;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-list {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.color-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #512b2b;
+}
+
+.category-label,
+.quantity-label,
+.price-label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.category-value,
+.quantity-value,
+.price-value {
+    font-size: 12px;
+    font-weight: bold;
+    color: #d9534f; 
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.update-button {
+    background-color: #000000; 
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.update-button:hover {
+    background-color: #c7c7c7; 
+    color: #000000;
+}
+
+@media (max-width: 1200px) {
+    .product-card {
+        width: calc(33.33% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 576px) {
+    .product-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-image {
+        height: 300px;
+    }
+}

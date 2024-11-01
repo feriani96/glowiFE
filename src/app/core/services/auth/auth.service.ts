@@ -52,5 +52,20 @@ export class AuthService {
   getOrderByTrackingId(trackingId: string): Observable<any>{
     return this.http.get(`${baseUrl}order/${trackingId}`)
   }
+
+  public getCategories(): Observable<any> {
+    return this.http.get(`${this.baseUrl}categories`);
+  }
+
+  public getProductsByCategory(categoryId: string): Observable<any> {
+    const token = this.userStorageService.getToken(); // Récupérez le token stocké
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Ajoutez le token à l'en-tête
+    });
+  
+    return this.http.get(`${this.baseUrl}products/category/${categoryId}`, { headers });
+  }
+  
+
 }
 

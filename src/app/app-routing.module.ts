@@ -4,15 +4,17 @@ import { LoginComponent } from './features/login/login.component';
 import { SignupComponent } from './features/signup/signup.component';
 import { TrackOrderComponent } from './track-order/track-order.component';
 import { MainContentComponent } from './shared/components/main-content/main-content.component';
+import { CategoryProductsComponent } from './category-products/category-products.component';
 ;
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  
-  { path: 'home', component: MainContentComponent },
+    { path: 'home', component: MainContentComponent },
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'order', component: TrackOrderComponent},
+  { path: 'category/:id', component: CategoryProductsComponent },
+
   { path: 'customer', loadChildren: () => import('./features/customer/customer.module').then(m => m.CustomerModule) }, 
   { path: 'admin', loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule) }
 ];

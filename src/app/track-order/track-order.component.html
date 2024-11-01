@@ -1,5 +1,5 @@
 <form [formGroup]="searchOrderForm" class="searchForm" (submit)="submitForm()">
-    <mat-form-field appearance="outline" class="search-input">
+    <mat-form-field appearance="outline" class="search-input" style="margin-top: 40px;">
         <mat-label>Enter Tracking Id To Search</mat-label>
         <input matInput formControlName="trackingId">
         <button mat-button matSuffix [disabled]="searchOrderForm.invalid">
@@ -9,32 +9,32 @@
 </form>
 
 <div class="order-details-container" *ngIf="order">
-    <mat-card>
+    <mat-card style="margin-top: 40px;">
         <mat-card-title>Order Details</mat-card-title>
 
-    <div class="order-detail">
-        Tracking ID: 
-        <strong>{{ order.trackingId }}</strong>
-    </div>
-    <div class="order-detail">
-        User Name: 
-        <strong>{{ order.userName }}</strong>
-    </div>
-    <div class="order-detail">
-        Address: 
-        <strong>{{ order.address }}</strong>
-    </div>
-    <div class="order-detail">
-        Amount: 
-        <strong>{{ order.amount }} DT</strong>
-    </div>
-    <div class="order-detail">
-        Status: 
-        <strong>{{ order.orderStatus }}</strong>
-    </div>
-    <div class="order-detail">
-        Date: 
-        <strong>{{ order.date | date }}</strong>
-    </div>
-</mat-card>
+        <div class="order-detail">
+            Tracking ID:
+            <strong>{{ order.trackingId }}</strong>
+        </div>
+        <div class="order-detail">
+            User Name:
+            <strong>{{ order.userName }}</strong>
+        </div>
+        <div class="order-detail">
+            Address:
+            <strong>{{ order.address }}</strong>
+        </div>
+        <div class="order-detail">
+            Amount:
+            <strong>{{ order.amount }} DT</strong>
+        </div>
+        <div class="order-detail">
+            Status:
+            <strong>{{ order.orderStatus }}</strong>
+        </div>
+        <div class="order-detail">
+            Date:
+            <strong>{{ order.date | date }}</strong>
+        </div>
+    </mat-card>
 </div>
