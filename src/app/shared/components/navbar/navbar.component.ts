@@ -22,8 +22,8 @@ export class NavbarComponent implements OnInit{
 
   isOffcanvasOpen: boolean = false;
   
-  ngOnInit() { // Ajoutez cette méthode
-    this.loadCategories(); // Chargez les catégories au démarrage
+  ngOnInit() { 
+    this.loadCategories(); 
   }
 
   toggleOffcanvas() {
@@ -45,12 +45,22 @@ export class NavbarComponent implements OnInit{
 
   loadCategories() {
     this.authService.getCategories().subscribe((categories) => {
-      console.log(categories); // Vérifiez ce que vous obtenez ici
-      this.categories = categories;
+      console.log('Categories:', categories);
+      this.authService.getFilledCategories().subscribe((products) => {
+        console.log('Products:', products);
+        // Assurez-vous que 'product.categoryId' est bien défini dans votre réponse
+        const categoriesWithProducts = categories.filter((category: any) =>
+          products.some((product: any) => product.id === category.id) // Vérifiez ici
+        );
+        this.categories = categoriesWithProducts;
+        console.log('Filtered Categories:', this.categories);
+      });
     });
   }
+  
+  
 
   resetSelection() {
-    this.selectedCategory = null; // Réinitialiser la sélection
+    this.selectedCategory = null;
 }
 }

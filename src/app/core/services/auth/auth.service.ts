@@ -13,11 +13,11 @@ export class AuthService {
   private baseUrl = environment.BASIC_URL;
 
 
-  constructor(private http:HttpClient,
+  constructor(private http: HttpClient,
     private userStorageService: UserStorageService,
   ) { }
 
-  register(signupRequest:any): Observable<any>{
+  register(signupRequest: any): Observable<any> {
     return this.http.post(`${this.baseUrl}sign-up`, signupRequest);
   }
 
@@ -49,7 +49,7 @@ export class AuthService {
     );
   }
 
-  getOrderByTrackingId(trackingId: string): Observable<any>{
+  getOrderByTrackingId(trackingId: string): Observable<any> {
     return this.http.get(`${baseUrl}order/${trackingId}`)
   }
 
@@ -58,12 +58,16 @@ export class AuthService {
   }
 
   public getProductsByCategory(categoryId: string): Observable<any> {
-    const token = this.userStorageService.getToken(); // Récupérez le token stocké
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}` // Ajoutez le token à l'en-tête
-    });
-  
-    return this.http.get(`${this.baseUrl}products/category/${categoryId}`, { headers });
+    return this.http.get(`${this.baseUrl}products/category/${categoryId}`);
+  }
+
+  public getFilledCategories(): Observable<any> {
+    return this.http.get(`${this.baseUrl}filled-categories`).pipe(
+      map(response => {
+        console.log("Filled Categories Response:", response);
+        return response;
+      })
+    );
   }
   
 
