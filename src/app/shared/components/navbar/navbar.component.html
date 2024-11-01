@@ -17,7 +17,7 @@
                         <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item" ><a class="nav-link me-4" routerLink="/home">Home</a></li>
                         
                         <ng-container *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
-                            <li *ngFor="let category of categories" class="nav-item">
+                            <li *ngFor="let category of categories | slice:0:4" class="nav-item">
                                 <a class="nav-link me-4" [routerLink]="['/category', category.id]">{{ category.name }}</a>
                             </li>
                         </ng-container>
@@ -61,9 +61,23 @@
                             <a class="nav-link me-4" routerLink="/home">Home</a>
                         </li>
 
+
+
                         <ng-container *ngIf="isCustomerLoggedIn">
-                            <li *ngFor="let category of categories" class="nav-item">
-                                <a class="nav-link me-4" [routerLink]="['/category', category.id]" (click)="resetSelection()">{{ category.name }}</a>
+                            <li *ngFor="let category of categories | slice:0:4" class="nav-item">
+                                <a class="nav-link me-4" [routerLink]="['/category', category.id]">{{ category.name }}</a>
+                            </li>
+                        </ng-container>
+
+                        <!-- Ajout d'un menu déroulant Angular Material -->
+                        <ng-container *ngIf="isCustomerLoggedIn">
+                            <li class="nav-item">
+                                <button mat-button [matMenuTriggerFor]="viewMoreMenu">View More</button>
+                                <mat-menu #viewMoreMenu="matMenu">
+                                    <ng-container *ngFor="let category of categories | slice:4">
+                                        <button mat-menu-item [routerLink]="['/category', category.id]">{{ category.name }}</button>
+                                    </ng-container>
+                                </mat-menu>
                             </li>
                         </ng-container>
 
