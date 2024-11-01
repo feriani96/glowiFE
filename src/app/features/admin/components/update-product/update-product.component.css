@@ -1,6 +1,7 @@
 .post-product-container {
     display: flex;
     justify-content: space-between;
+    margin-top: 140px;
   }
   
   .image-uploader-section {

@@ -15,53 +15,39 @@
                 <div class="offcanvas-body">
                     <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
                         <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item" ><a class="nav-link me-4" routerLink="/home">Home</a></li>
-                        
                         <ng-container *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
                             <li *ngFor="let category of categories | slice:0:4" class="nav-item">
                                 <a class="nav-link me-4" [routerLink]="['/category', category.id]">{{ category.name }}</a>
                             </li>
                         </ng-container>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"  routerLink="/customer/dashboard"><a class="nav-link me-4" >PRODUCT</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" >SHOES & ACC</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" >JUNIORS</a></li>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" >FORMAL & EVENING</a></li>
+
+                        <ng-container *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+                            <li class="nav-item">
+                                <button mat-button [matMenuTriggerFor]="viewMoreMenu">View More</button>
+                                <mat-menu #viewMoreMenu="matMenu">
+                                    <ng-container *ngFor="let category of categories | slice:4">
+                                        <button mat-menu-item [routerLink]="['/category', category.id]">{{ category.name }}</button>
+                                    </ng-container>
+                                </mat-menu>
+                            </li>
+                        </ng-container>
                         <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/order" routerLinkActive="active">Trak Order</a></li>
                         
 
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/home">Home</a>
-                        </li>
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
-                        </li>
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/admin/analytics" routerLinkActive="active">Analytics</a>
-                        </li>
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/admin/category" routerLinkActive="active">Category</a>
-                        </li>
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/admin/product" routerLinkActive="active">Product</a>
-                        </li>
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/admin/orders" routerLinkActive="active">Orders</a>
-                        </li>
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/admin/post-coupon" routerLinkActive="active">Post Coupon</a>
-                        </li>
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn">
-                            <a class="nav-link me-4" routerLink="/admin/coupons" routerLinkActive="active">coupon</a>
-                        </li>
-
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/home">Home</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/analytics" routerLinkActive="active">Analytics</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/category" routerLinkActive="active">Category</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/product" routerLinkActive="active">Product</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/orders" routerLinkActive="active">Orders</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/post-coupon" routerLinkActive="active">Post Coupon</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/coupons" routerLinkActive="active">coupon</a></li>
 
 
 
                         <!-- customer -->
-                        <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn">
-                            <a class="nav-link me-4" routerLink="/home">Home</a>
-                        </li>
-
-
+                        <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn"><a class="nav-link me-4" routerLink="/home">Home</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn"><a class="nav-link me-4" routerLink="/customer/dashboard" routerLinkActive="active">Product</a></li>
 
                         <ng-container *ngIf="isCustomerLoggedIn">
                             <li *ngFor="let category of categories | slice:0:4" class="nav-item">
@@ -69,7 +55,6 @@
                             </li>
                         </ng-container>
 
-                        <!-- Ajout d'un menu déroulant Angular Material -->
                         <ng-container *ngIf="isCustomerLoggedIn">
                             <li class="nav-item">
                                 <button mat-button [matMenuTriggerFor]="viewMoreMenu">View More</button>
@@ -81,13 +66,7 @@
                             </li>
                         </ng-container>
 
-                        <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn">
-                            <a class="nav-link me-4" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
-                        </li>
-                        <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn">
-                            <a class="nav-link me-4" routerLink="/customer/my_orders" routerLinkActive="active">Orders</a>
-                        </li>
-
+                        <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn"><a class="nav-link me-4" routerLink="/customer/my_orders" routerLinkActive="active">Orders</a></li>
                     </ul>
                 </div>
             </div>

@@ -6,16 +6,19 @@ import { environment } from 'src/environments/environment';
 
 const baseUrl = environment.BASIC_URL;
 
+// Constantes pour les rôles
+const ROLES = {
+  CUSTOMER: 'CUSTOMER',
+  VISITOR: 'VISITOR'
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private baseUrl = environment.BASIC_URL;
 
-
-  constructor(private http: HttpClient,
-    private userStorageService: UserStorageService,
-  ) { }
+  constructor(private http: HttpClient, private userStorageService: UserStorageService) {}
 
   register(signupRequest: any): Observable<any> {
     return this.http.post(`${this.baseUrl}sign-up`, signupRequest);
@@ -29,7 +32,6 @@ export class AuthService {
       map((res: any) => {
         console.log(res);
 
-        // Extract JWT from response body
         const token = res.body?.jwt;
         const user = {
           userId: res.body?.userId,
@@ -39,7 +41,6 @@ export class AuthService {
         console.log(token);
 
         if (token && user) {
-          // Store token and user data in localStorage
           this.userStorageService.saveToken(token);
           this.userStorageService.saveUser(user);
           return true;
@@ -50,26 +51,42 @@ export class AuthService {
   }
 
   getOrderByTrackingId(trackingId: string): Observable<any> {
-    return this.http.get(`${baseUrl}order/${trackingId}`)
+    return this.http.get(`${baseUrl}order/${trackingId}`);
   }
 
-  public getCategories(): Observable<any> {
-    return this.http.get(`${this.baseUrl}categories`);
+  // Accès pour les visiteurs et les clients uniquement
+  getCategories(): Observable<any> {
+    if (this.isAuthorized()) {
+      return this.http.get(`${this.baseUrl}categories`);
+    } else {
+      throw new Error('Unauthorized');
+    }
   }
 
-  public getProductsByCategory(categoryId: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}products/category/${categoryId}`);
+  getProductsByCategory(categoryId: string): Observable<any> {
+    if (this.isAuthorized()) {
+      return this.http.get(`${this.baseUrl}products/category/${categoryId}`);
+    } else {
+      throw new Error('Unauthorized');
+    }
   }
 
-  public getFilledCategories(): Observable<any> {
-    return this.http.get(`${this.baseUrl}filled-categories`).pipe(
-      map(response => {
-        console.log("Filled Categories Response:", response);
-        return response;
-      })
-    );
+  getFilledCategories(): Observable<any> {
+    if (this.isAuthorized()) {
+      return this.http.get(`${this.baseUrl}filled-categories`).pipe(
+        map(response => {
+          console.log("Filled Categories Response:", response);
+          return response;
+        })
+      );
+    } else {
+      throw new Error('Unauthorized');
+    }
   }
-  
 
+  // Vérification de l'autorisation pour les visiteurs et clients
+  private isAuthorized(): boolean {
+    const userRole = UserStorageService.getUserRole();
+    return userRole === ROLES.CUSTOMER || !UserStorageService.isAuthenticated();
+  }
 }
-

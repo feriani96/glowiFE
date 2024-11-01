@@ -23,6 +23,9 @@ export class NavbarComponent implements OnInit{
   isOffcanvasOpen: boolean = false;
   
   ngOnInit() { 
+    this.isCustomerLoggedIn = UserStorageService.isCustomerLoggedIn();
+    this.isAdminLoggedIn = UserStorageService.isAdminLoggedIn();
+    
     this.loadCategories(); 
   }
 
