@@ -14,14 +14,17 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<any> {
-    return this.http.get(`${baseUrl}api/customer/products`, {
-      headers: this.createAuthorizationHeader(),
+    return this.http.get(`${baseUrl}products`, {
     });
   }
 
   getAllProductByName(name: any): Observable<any> {
-    return this.http.get(`${baseUrl}api/customer/search/${name}`, {
-      headers: this.createAuthorizationHeader(),
+    return this.http.get(`${baseUrl}search/${name}`, {
+    });
+  }
+
+  getProductDetailById(productId: String): Observable<any> {
+    return this.http.get(`${baseUrl}product/${productId}`, {
     });
   }
 
@@ -104,11 +107,6 @@ export class CustomerService {
     });
   }
 
-  getProductDetailById(productId: String): Observable<any> {
-    return this.http.get(`${baseUrl}api/customer/product/${productId}`, {
-      headers: this.createAuthorizationHeader(),
-    });
-  }
 
   addProductToWishlist(wishlistDto: any): Observable<any> {
     return this.http.post(`${baseUrl}api/customer/wishlist`, wishlistDto, {

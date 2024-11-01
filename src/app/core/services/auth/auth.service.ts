@@ -54,7 +54,6 @@ export class AuthService {
     return this.http.get(`${baseUrl}order/${trackingId}`);
   }
 
-  // Accès pour les visiteurs et les clients uniquement
   getCategories(): Observable<any> {
     if (this.isAuthorized()) {
       return this.http.get(`${this.baseUrl}categories`);
@@ -84,7 +83,6 @@ export class AuthService {
     }
   }
 
-  // Vérification de l'autorisation pour les visiteurs et clients
   private isAuthorized(): boolean {
     const userRole = UserStorageService.getUserRole();
     return userRole === ROLES.CUSTOMER || !UserStorageService.isAuthenticated();
