@@ -1,0 +1,10 @@
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#footer, #footer-bottom {
+    width: 100%;
+    background-color: #F9F9F9;
+}

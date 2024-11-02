@@ -1,5 +1,5 @@
 <div class="category-container">
-    <h2>{{ categoryName }}</h2>
+    <h2 class="category-name">{{ categoryName }}</h2>
     
     <div *ngIf="products.length > 0; else noProducts" class="product-list">
       <mat-card class="product-card" *ngFor="let product of products">

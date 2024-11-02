@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     NavbarComponent,
     MainContentComponent,
+    FooterComponent,
   ],
   
   imports: [
@@ -36,6 +38,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     NavbarComponent,
     MainContentComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
