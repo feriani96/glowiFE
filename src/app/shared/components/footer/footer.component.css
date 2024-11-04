@@ -8,3 +8,9 @@ html, body {
     width: 100%;
     background-color: #F9F9F9;
 }
+
+.footer-menu img{
+    display: block;
+    width: 150px; 
+    height: auto;
+}

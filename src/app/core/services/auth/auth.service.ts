@@ -63,14 +63,26 @@ export class AuthService {
     return this.http.get(`${this.baseUrl}products/category/${categoryId}`);
   }
 
+  getProducts(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}products`);
+  }
 
-  getFilledCategories(): Observable<any> {
-    return this.http.get(`${this.baseUrl}filled-categories`).pipe(
-      map(response => {
-        console.log("Filled Categories Response:", response);
-        return response;
-      })
-    )
+  getFilteredCategories(): Observable<any[]> {
+    return new Observable((observer) => {
+      this.getCategories().subscribe((categories) => {
+        this.getProducts().subscribe((products: any[]) => { // Changer ici
+          const categoriesWithProducts = categories.filter((category: any) =>
+            products.some((product: any) => product.categoryId === category.id)
+          );
+          observer.next(categoriesWithProducts);
+          observer.complete();
+        }, error => {
+          observer.error(error); // Gestion des erreurs lors de la récupération des produits
+        });
+      }, error => {
+        observer.error(error); // Gestion des erreurs lors de la récupération des catégories
+      });
+    });
   }
 
 

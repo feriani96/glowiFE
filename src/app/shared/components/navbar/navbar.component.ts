@@ -49,18 +49,24 @@ export class NavbarComponent implements OnInit{
   loadCategories() {
     this.authService.getCategories().subscribe((categories) => {
       console.log('Categories:', categories);
-      this.authService.getFilledCategories().subscribe((products) => {
+      
+      // Remplacer getFilledCategories par getProducts
+      this.authService.getProducts().subscribe((products: any[]) => {
         console.log('Products:', products);
-        // Assurez-vous que 'product.categoryId' est bien défini dans votre réponse
+        
         const categoriesWithProducts = categories.filter((category: any) =>
-          products.some((product: any) => product.id === category.id) // Vérifiez ici
+          products.some((product: any) => product.categoryId === category.id) // Assurez-vous que le champ utilisé est correct
         );
+        
         this.categories = categoriesWithProducts;
         console.log('Filtered Categories:', this.categories);
+      }, error => {
+        console.error('Erreur lors de la récupération des produits:', error);
       });
+    }, error => {
+      console.error('Erreur lors de la récupération des catégories:', error);
     });
   }
-  
   
 
   resetSelection() {
