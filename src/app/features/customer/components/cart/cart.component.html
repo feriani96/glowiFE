@@ -1,35 +1,30 @@
 <ng-container *ngIf="userId; else guestView">
-
     <div class="cart-wrapper">
-
         <div class="cart-container">
-
             <h2 class="cart-title">YOUR SHOPPING CART</h2>
-
+    
             <ng-container *ngIf="cartItems.length > 0; else emptyCart">
                 <div class="cart-item" *ngFor="let item of cartItems">
                     <div class="product_info">
                         <div class="product-image">
-                            <img [src]="currentImageUrl(item)" alt="{{item.productName}}"
-                                *ngIf="currentImageUrl(item); else noImage">
+                            <img [src]="currentImageUrl(item)" alt="{{item.productName}}" *ngIf="currentImageUrl(item); else noImage">
                         </div>
                         <ng-template #noImage>
                             <img src="default-image-url.jpg" alt="Default Image">
                         </ng-template>
-
+    
                         <div class="product-details">
                             <div class="item-row">
                                 <div class="item-name" [ngClass]="{ 'highlight': item.highlight }">
                                     {{item.productName}}
                                 </div>
-
+    
                                 <div class="price-container">
                                     <div class="item-price">{{item.price}} Dt</div>
                                 </div>
-
+    
                                 <div class="quantity-controls">
-                                    <button mat-icon-button [disabled]="item.quantity == 1"
-                                        (click)="decreaseQuantity(item.productId)">
+                                    <button mat-icon-button [disabled]="item.quantity == 1" (click)="decreaseQuantity(item.productId)">
                                         <mat-icon>remove_circle_outline</mat-icon>
                                     </button>
                                     <span class="quantity">{{item.quantity}}</span>
@@ -37,7 +32,7 @@
                                         <mat-icon>add_circle_outline</mat-icon>
                                     </button>
                                     <button mat-icon-button (click)="deleteProduct(item.productId)">
-                                        <mat-icon>delete</mat-icon>
+                                        <mat-icon>delete</mat-icon> 
                                     </button>
                                 </div>
                             </div>
@@ -45,17 +40,15 @@
                     </div>
                 </div>
             </ng-container>
-
+    
             <ng-template #emptyCart>
                 <div class="emptyCart">
                     <mat-icon class="icon">remove_shopping_cart</mat-icon>
                     <span>Nothing to see here.</span>
                 </div>
             </ng-template>
-
-
         </div>
-
+    
         <div class="cart-summary">
             <span class="order-summary-title">ORDER SUMMARY</span>
             <div class="total-price">
@@ -69,26 +62,23 @@
             <div class="total-price" *ngIf="cartItems.length > 0 && order.couponName">
                 <span *ngIf="order.couponName">Coupon Applied: {{order.couponName}}</span>
             </div>
-
+    
             <div class="container" *ngIf="order.couponName == null">
                 <form [formGroup]="couponFrom" (ngSubmit)="applyCoupon()">
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Code</mat-label>
                         <input matInput type="text" placeholder="Code" formControlName="code" />
-                        <mat-error *ngIf="couponFrom.get('code')?.hasError('required')">This input is
-                            required!</mat-error>
+                        <mat-error *ngIf="couponFrom.get('code')?.hasError('required')">This input is required!</mat-error>
                     </mat-form-field>
-
+        
                     <button mat-raised-button type="submit" class="submit-btn">Apply Coupon</button>
                 </form>
             </div>
-
+            
             <div class="actions">
-                <button mat-raised-button class="place-order-btn" (click)="placeOrder()"
-                    [disabled]="cartItems.length === 0">Place Order</button>
+                <button mat-raised-button class="place-order-btn" (click)="placeOrder()" [disabled]="cartItems.length === 0">Place Order</button>
             </div>
         </div>
-
     </div>
 </ng-container>
 

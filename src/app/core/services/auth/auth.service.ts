@@ -18,7 +18,7 @@ const ROLES = {
 export class AuthService {
   private baseUrl = environment.BASIC_URL;
 
-  constructor(private http: HttpClient, private userStorageService: UserStorageService) {}
+  constructor(private http: HttpClient, private userStorageService: UserStorageService) { }
 
   register(signupRequest: any): Observable<any> {
     return this.http.post(`${this.baseUrl}sign-up`, signupRequest);
@@ -55,36 +55,23 @@ export class AuthService {
   }
 
   getCategories(): Observable<any> {
-    if (this.isAuthorized()) {
-      return this.http.get(`${this.baseUrl}categories`);
-    } else {
-      throw new Error('Unauthorized');
-    }
+    return this.http.get(`${this.baseUrl}categories`);
+
   }
 
   getProductsByCategory(categoryId: string): Observable<any> {
-    if (this.isAuthorized()) {
-      return this.http.get(`${this.baseUrl}products/category/${categoryId}`);
-    } else {
-      throw new Error('Unauthorized');
-    }
+    return this.http.get(`${this.baseUrl}products/category/${categoryId}`);
   }
+
 
   getFilledCategories(): Observable<any> {
-    if (this.isAuthorized()) {
-      return this.http.get(`${this.baseUrl}filled-categories`).pipe(
-        map(response => {
-          console.log("Filled Categories Response:", response);
-          return response;
-        })
-      );
-    } else {
-      throw new Error('Unauthorized');
-    }
+    return this.http.get(`${this.baseUrl}filled-categories`).pipe(
+      map(response => {
+        console.log("Filled Categories Response:", response);
+        return response;
+      })
+    )
   }
 
-  private isAuthorized(): boolean {
-    const userRole = UserStorageService.getUserRole();
-    return userRole === ROLES.CUSTOMER || !UserStorageService.isAuthenticated();
-  }
+
 }
