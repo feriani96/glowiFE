@@ -35,7 +35,7 @@ export class PostCategoryComponent {
           this.snackBar.open('Category Posted Successfully!', 'Close', {
             duration: 5000
           });
-          this.router.navigateByUrl('/admin/dashboard');
+          this.router.navigateByUrl('/admin/listCategories');
         }else{
           this.snackBar.open(res.message, 'Close', {
             duration: 5000,

@@ -1,0 +1,48 @@
+/* styles.css */
+body {
+    font-family: 'Neue Haas Grotesk Display Pro Semibold', sans-serif; /* Définir la police de caractère par défaut */
+  }
+  
+  .table-container {
+    margin: 20px auto; /* Centre le tableau avec un espacement */
+    max-width: 90%; /* Limite la largeur maximale pour un meilleur rendu */
+    overflow-x: auto; /* Permet le défilement horizontal sur les petits écrans */
+    margin-top: 150px;
+  }
+  
+  .mat-toolbar {
+    background-color: #3f51b5; /* Exemple de couleur tendance (vous pouvez la changer) */
+    display: flex;
+    justify-content: space-between; /* Espace entre le titre et le bouton */
+  }
+  
+  .spacer {
+    flex: 1 1 auto; /* Permet au spacer de prendre tout l'espace disponible */
+  }
+  
+  .mat-table {
+    width: 100%; /* Assurez-vous que le tableau utilise toute la largeur disponible */
+  }
+  
+  .mat-icon-button {
+    color: #fff; /* Couleur des icônes par défaut */
+  }
+  
+  .mat-icon-button:hover {
+    color: #f50057; /* Couleur lors du survol des icônes (couleur tendance) */
+  }
+  
+  .button-edit {
+    color: #4caf50; /* Couleur pour le bouton de modification */
+  }
+  
+  .button-delete {
+    color: #f44336; /* Couleur pour le bouton de suppression */
+  }
+  
+  @media (max-width: 600px) {
+    .mat-header-cell, .mat-cell {
+      font-size: 14px; /* Réduit la taille de la police sur les petits écrans */
+    }
+  }
+  

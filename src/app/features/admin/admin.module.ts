@@ -16,6 +16,8 @@ import { PostProductFaqComponent } from './components/post-product-faq/post-prod
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { OrderByStatusComponent } from './components/analytics/order-by-status/order-by-status.component';
+import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
 
 
 
@@ -30,7 +32,9 @@ import { OrderByStatusComponent } from './components/analytics/order-by-status/o
     PostProductFaqComponent,
     UpdateProductComponent,
     AnalyticsComponent,
-    OrderByStatusComponent
+    OrderByStatusComponent,
+    ListCategoriesComponent,
+    EditCategoryComponent
   ],
   imports: [
     CommonModule,

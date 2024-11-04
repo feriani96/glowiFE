@@ -9,10 +9,13 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { PostProductFaqComponent } from './components/post-product-faq/post-product-faq.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'category', component: PostCategoryComponent },
+
+  { path: 'listCategories', component: ListCategoriesComponent },
   { path: 'product', component: PostProductComponent },
   { path: 'product/:productId', component: UpdateProductComponent },
   { path: 'post-coupon', component: PostCouponComponent },

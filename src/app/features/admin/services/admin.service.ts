@@ -25,6 +25,18 @@ export class AdminService {
     });
   }
 
+  updateCategory(categoryId: any, categoryDto: any): Observable<any> {
+    return this.http.put(`${baseUrl}api/admin/category/${categoryId}`, categoryDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+
+  deleteCategory(categoryId: string) {
+    return this.http.delete(`${baseUrl}api/admin/category/${categoryId}`, {
+    });
+  }
+
   addProduct(productDto: any): Observable<any> {
     return this.http.post(`${baseUrl}api/admin/products`, productDto, {
       headers: this.createAuthorizationHeader(),
