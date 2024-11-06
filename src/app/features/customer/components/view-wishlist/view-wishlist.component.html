@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="userId; else guestView">
     <div class="product-card" *ngFor="let product of products">
         <div class="product_info">
             <div class="product-image">
@@ -22,3 +22,13 @@
         </div>
     </div>
 </div>
+
+<ng-template #guestView>
+    <div class="guest-view">
+        <mat-icon class="icon">shopping_cart</mat-icon>
+        <h3>Welcome to Glowi!</h3>
+        <p>You need to sign in or create an account to view your cart.</p>
+        <button mat-raised-button color="primary" routerLink="/login">Login</button>
+        <button mat-raised-button color="accent" routerLink="/signup">Create Account</button>
+    </div>
+</ng-template>

@@ -25,7 +25,7 @@
 
                         <ng-container *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
                             <li class="nav-item">
-                                <button mat-button [matMenuTriggerFor]="viewMoreMenu">View More</button>
+                                <button class="nav-item text-uppercase" mat-button [matMenuTriggerFor]="viewMoreMenu">All Categories</button>
                                 <mat-menu #viewMoreMenu="matMenu">
                                     <ng-container *ngFor="let category of categories | slice:4">
                                         <button mat-menu-item [routerLink]="['/category', category.id]">{{ category.name }}</button>
@@ -33,21 +33,21 @@
                                 </mat-menu>
                             </li>
                         </ng-container>
-                        <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/order" routerLinkActive="active">Trak Order</a></li>
+                        <!-- <li *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/order" routerLinkActive="active">Trak Order</a></li> -->
                         
 
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/home">Home</a></li>
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a></li>
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/analytics" routerLinkActive="active">Analytics</a></li>
-                        <!-- <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/category" routerLinkActive="active">Category</a></li> -->
+
+                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/dashboard" routerLinkActive="active">All Products</a></li>
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/listCategories" routerLinkActive="active">Lsit Categories</a></li>
 
-                        <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/product" routerLinkActive="active">Product</a></li>
+                        <!-- <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/product" routerLinkActive="active">Post Product</a></li> -->
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/orders" routerLinkActive="active">Orders</a></li>
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/post-coupon" routerLinkActive="active">Post Coupon</a></li>
                         <li class="nav-item text-uppercase" *ngIf="isAdminLoggedIn"><a class="nav-link me-4" routerLink="/admin/coupons" routerLinkActive="active">coupon</a></li>
-                        <li class="nav-item" *ngIf="isAdminLoggedIn">
-                            <button mat-button [matMenuTriggerFor]="adminCategoryMenu">Categories</button>
+                        <li class="nav-item" *ngIf="isAdminLoggedIn && (categories$ | async) as categories">
+                            <button class="nav-item text-uppercase" mat-button [matMenuTriggerFor]="adminCategoryMenu">All Categorie</button>
                             <mat-menu #adminCategoryMenu="matMenu">
                                 <ng-container *ngFor="let category of categories">
                                     <button mat-menu-item [routerLink]="['/category', category.id]">{{ category.name }}</button>
@@ -68,7 +68,7 @@
 
                         <ng-container *ngIf="isCustomerLoggedIn">
                             <li class="nav-item">
-                                <button mat-button [matMenuTriggerFor]="viewMoreMenu">View More</button>
+                                <button class="nav-item text-uppercase" mat-button [matMenuTriggerFor]="viewMoreMenu">All Categorie</button>
                                 <mat-menu #viewMoreMenu="matMenu">
                                     <ng-container *ngFor="let category of categories | slice:4">
                                         <button mat-menu-item [routerLink]="['/category', category.id]">{{ category.name }}</button>
@@ -78,6 +78,8 @@
                         </ng-container>
 
                         <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn"><a class="nav-link me-4" routerLink="/customer/my_orders" routerLinkActive="active">Orders</a></li>
+                        <li class="nav-item text-uppercase" *ngIf="isCustomerLoggedIn" class="nav-item"><a class="nav-link me-4" routerLink="/order" routerLinkActive="active">Trak Order</a></li>
+
                     </ul>
                 </div>
             </div>

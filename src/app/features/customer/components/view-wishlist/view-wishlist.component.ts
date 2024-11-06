@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
+import { UserStorageService } from 'src/app/core/services/storage/user-storage.service';
 
 @Component({
   selector: 'app-view-wishlist',
@@ -9,12 +10,17 @@ import { CustomerService } from '../../services/customer.service';
 export class ViewWishlistComponent {
 
   products: any[] = [];
+  userId: string | null = null;
 
-  constructor(private customerService: CustomerService){}
+  constructor(private customerService: CustomerService){
+    this.userId = UserStorageService.getUserId();
+  }
 
 
   ngOnInit() {
     this.getWishlistByUserId();
+    this.userId = UserStorageService.getUserId();
+
   }
 
   getWishlistByUserId(){

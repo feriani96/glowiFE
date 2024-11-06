@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserStorageService } from 'src/app/core/services/storage/user-storage.service';
 import { environment } from 'src/environments/environment';
 
@@ -10,8 +10,19 @@ const baseUrl = environment.BASIC_URL;
   providedIn: 'root'
 })
 export class AdminService {
+  private categoriesSubject = new BehaviorSubject<any[]>([]);
+  categories$ = this.categoriesSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadCategories();
+
+   }
+
+   loadCategories(): void {
+    this.getAllCategories().subscribe(categories => {
+      this.categoriesSubject.next(categories);
+    });
+  }
 
   addCategory(categoryDto: any): Observable<any> {
     return this.http.post(`${baseUrl}api/admin/category`, categoryDto, {
@@ -32,9 +43,10 @@ export class AdminService {
   }
 
 
-  deleteCategory(categoryId: string) {
-    return this.http.delete(`${baseUrl}api/admin/category/${categoryId}`, {
-    });
+  deleteCategory(categoryId: string): Observable<any> {
+    return this.http.delete(`${baseUrl}api/admin/category/${categoryId}`).pipe(
+      tap(() => this.loadCategories()) 
+    );
   }
 
   addProduct(productDto: any): Observable<any> {

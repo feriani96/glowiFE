@@ -40,14 +40,13 @@ export class EditCategoryComponent implements OnInit {
           this.snackBar.open('Category updated successfully!', 'Close', {
             duration: 5000
           });
-          // Close the dialog and pass true to indicate success
           this.dialogRef.close(true);
         } else {
           this.snackBar.open(res.message, 'Fermer', {
             duration: 5000,
             panelClass: 'error-snackbar'
           });
-          this.dialogRef.close(false); // Close with false if there was an error
+          this.dialogRef.close(false); 
         }
       });
     } else {

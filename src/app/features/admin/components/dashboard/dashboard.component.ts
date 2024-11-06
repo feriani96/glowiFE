@@ -111,7 +111,7 @@ export class DashboardComponent implements OnInit {
           this.snackBar.open('Produit supprimé avec succès', 'Fermer', {
             duration: 3000
           });
-          this.getProducts(); // Recharge les produits après suppression
+          this.getProducts();
         },
         (error) => {
           this.snackBar.open('Erreur lors de la suppression du produit', 'Fermer', {

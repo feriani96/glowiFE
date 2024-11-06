@@ -25,9 +25,9 @@
 
     <div class="product-details">
       <!-- Liste of colors-->
-      <div *ngIf="product.colors && product.colors.length > 0" class="color-list">
+      <!-- <div *ngIf="product.colors && product.colors.length > 0" class="color-list">
         <span *ngFor="let color of product.colors" [ngStyle]="{'background-color': color}" class="color-circle"></span>
-      </div>
+      </div> -->
 
       <!-- Name-->
       <h2 class="product-name" routerLink="/customer/product/{{product.id}}">{{product.name}}</h2>

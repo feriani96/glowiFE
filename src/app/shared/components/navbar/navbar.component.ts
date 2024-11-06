@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { UserStorageService } from 'src/app/core/services/storage/user-storage.service';
+import { AdminService } from 'src/app/features/admin/services/admin.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,8 @@ import { UserStorageService } from 'src/app/core/services/storage/user-storage.s
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
+  categories$ = this.adminService.categories$;
+
   @Input() isCustomerLoggedIn: boolean = false;
   @Input() isAdminLoggedIn: boolean = false;
 
@@ -34,7 +37,8 @@ export class NavbarComponent implements OnInit{
   }
 
   constructor(private router : Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private adminService: AdminService
   ) {
     this.checkWindowSize();
     window.addEventListener('resize', () => this.checkWindowSize());

@@ -14,7 +14,6 @@ import { ListCategoriesComponent } from './components/list-categories/list-categ
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'category', component: PostCategoryComponent },
-
   { path: 'listCategories', component: ListCategoriesComponent },
   { path: 'product', component: PostProductComponent },
   { path: 'product/:productId', component: UpdateProductComponent },
@@ -23,6 +22,7 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'faq/:productId', component: PostProductFaqComponent },
   { path: 'analytics', component: AnalyticsComponent },
+  
 
 
 

@@ -16,8 +16,11 @@
   <p>No products found</p>
 </div>
 
-
+<div class="add-product-button">
+  <button mat-raised-button color="primary" [routerLink]="'/admin/product'" style="margin: 33px;">Add Product</button>
+</div>
 <div class="product-list">
+  
   <mat-card class="product-card" *ngFor="let product of products">
     <div class="product-image" (mouseenter)="startImageRotation(product)" (mouseleave)="stopImageRotation()">
       <img mat-card-image [src]="currentImageUrl(product)" alt="Image produit">

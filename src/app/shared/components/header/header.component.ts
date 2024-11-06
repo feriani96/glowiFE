@@ -63,7 +63,7 @@ export class HeaderComponent {
 
   logout() {
     UserStorageService.signOut();
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('/home');
   }
 
   @HostListener('window:resize', ['$event'])

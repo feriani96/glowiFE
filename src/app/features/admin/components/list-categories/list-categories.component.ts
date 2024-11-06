@@ -35,13 +35,12 @@ export class ListCategoriesComponent {
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.snackBar.open('Catégorie mise à jour avec succès', 'Fermer', {
+        this.snackBar.open('Category updated successfully!', 'Close', {
           duration: 3000
         });
-        this.loadCategories(); // Refresh the category list
+        this.loadCategories(); 
       } else {
-        // Optionally handle cancellation or error here
-        this.snackBar.open('Échec de la mise à jour de la catégorie', 'Fermer', {
+        this.snackBar.open('Failed to update the category', 'Close', {
           duration: 3000
         });
       }
@@ -50,16 +49,16 @@ export class ListCategoriesComponent {
   
   
   deleteCategory(categoryId: string): void {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?')) {
+    if (confirm('Are you sure you want to delete this category ?')) {
       this.adminService.deleteCategory(categoryId).subscribe(
         () => {
-          this.snackBar.open('Catégorie supprimée avec succès', 'Fermer', {
+          this.snackBar.open('Category deleted successfully', 'Close', {
             duration: 3000
           });
           this.loadCategories();
         },
         (error) => {
-          this.snackBar.open('Erreur lors de la suppression de la catégorie', 'Fermer', {
+          this.snackBar.open('Error while deleting the category', 'Close', {
             duration: 3000
           });
         }

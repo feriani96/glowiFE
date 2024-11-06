@@ -1,3 +1,43 @@
 .margin-top {
     margin-top: 120px; /* Ajustez la valeur selon vos besoins */
 }
+/* Styles globaux ou dans le fichier CSS du composant */
+h2 {
+    font-family: "Neue Haas Grotesk Display Pro Medium";
+    text-align: center; /* Centrer le texte */
+    margin-bottom: 20px; /* Espace sous le titre */
+}
+
+.orders-title {
+    font-family: "Neue Haas Grotesk Display Pro Medium", sans-serif;
+    margin: 20px 0; /* Marge pour espacer le titre du tableau */
+    text-align: center; /* Centrer le titre */
+}
+
+.mat-table {
+    width: 100%; /* S'assurer que le tableau utilise toute la largeur */
+}
+
+.header-cell {
+    font-weight: bolder;
+    color: blue;
+}
+
+.amount-cell {
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .orders-title {
+        font-size: 24px; /* Réduit la taille de la police sur les petits écrans */
+    }
+
+    .mat-table {
+        font-size: 14px; /* Réduit la taille de la police du tableau */
+    }
+
+    .header-cell, .mat-cell {
+        padding: 8px; /* Ajuste le padding pour les petits écrans */
+    }
+}

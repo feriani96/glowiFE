@@ -1,18 +1,21 @@
-<h1 mat-dialog-title>Edit Category</h1>
-<div mat-dialog-content>
-  <form [formGroup]="categoryForm">
-    <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name" required>
-    </mat-form-field>
+<div class="container">
+  <h2>Edit Category</h2>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description" required></textarea>
-    </mat-form-field>
+  <form [formGroup]="categoryForm" (ngSubmit)="onSave()">
+      <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" placeholder="Name" formControlName="name">
+          <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">This input is required!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Description" formControlName="description"></textarea>
+          <mat-error *ngIf="categoryForm.get('description')?.hasError('required')">This input is required!</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button class="submit-button" [ngClass]="{ 'enabled': categoryForm.valid }" [disabled]="!categoryForm.valid" type="submit">
+          Save Changes
+      </button>
   </form>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" (click)="onSave()">Save</button>
 </div>

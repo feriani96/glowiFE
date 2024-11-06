@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'category/:id', component: CategoryProductsComponent },
 
   { path: 'customer', loadChildren: () => import('./features/customer/customer.module').then(m => m.CustomerModule) }, 
-  { path: 'admin', loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule) }
+  { path: 'admin', loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule) },
+
 ];
 
 
